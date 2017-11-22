@@ -11,5 +11,5 @@ public:
 	void fileOut(char *, vector<const char *>*);
 	void fileRemove(const char *, int *);
 private:
-	bool findFile(const char *);
+	bool fileFind(const char *);
 };

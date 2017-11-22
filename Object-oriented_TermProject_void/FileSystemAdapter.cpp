@@ -3,7 +3,7 @@
 
 void FileSystemAdapter::fileIn(const char* path, vector<const char*>* contents)
 {
-	if (findFile(path)) {
+	if (fileFind(path)) {
 		ifstream inFile(path);
 		while (!inFile.eof()) {
 			char* line = new char[1000];
@@ -16,7 +16,7 @@ void FileSystemAdapter::fileIn(const char* path, vector<const char*>* contents)
 
 void FileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
 {
-	if (!findFile(path)) {
+	if (!fileFind(path)) {
 		StringFixAdapter* fix = new StringFixAdapter();
 		vector<string>* tokens = new vector<string>();
 		delete fix;
@@ -32,8 +32,9 @@ void FileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
 		delete tokens;
 	}
 	ofstream outFile(path);
-	for (int i = 0; i < contents->size(); i++)
+	for (int i = 0; i < contents->size() - 1; i++)
 		outFile << contents->at(i) << endl;
+	outFile << contents->at(contents->size() - 1);
 	outFile.close();
 }
 
@@ -42,7 +43,7 @@ void FileSystemAdapter::fileRemove(const char* path, int* isFileRemoved)
 	*isFileRemoved = remove(path);
 }
 
-bool FileSystemAdapter::findFile(const char* path)
+bool FileSystemAdapter::fileFind(const char* path)
 {
 	ifstream fileFind(path);
 	bool find = fileFind.is_open();

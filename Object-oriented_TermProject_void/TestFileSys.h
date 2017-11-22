@@ -23,7 +23,7 @@ public:
 		fileSys = new FileSystemAdapter();
 		fileSys->fileIn("test1\\test.txt", contents);
 		delete fileSys;
-		for (int i = 0; i < contents->size() - 1; i++)
+		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
 		cout << endl;
 
@@ -31,7 +31,15 @@ public:
 		fileSys = new FileSystemAdapter();
 		fileSys->fileIn("test1\\test2\\test.txt", contents);
 		delete fileSys;
-		for (int i = 0; i < contents->size() - 1; i++)
+		for (int i = 0; i < contents->size(); i++)
+			cout << contents->at(i) << endl;
+		cout << endl;
+
+		contents->clear();
+		fileSys = new FileSystemAdapter();
+		fileSys->fileIn("asadasd", contents);
+		delete fileSys;
+		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
 		cout << endl;
 
