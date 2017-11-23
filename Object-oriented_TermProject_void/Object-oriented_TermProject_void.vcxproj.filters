@@ -39,6 +39,12 @@
     <ClInclude Include="StringFixClient.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SignUpInClient.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SignUpInAdapter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +57,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="FileSystemAdapter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SignUpInAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

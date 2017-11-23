@@ -19,8 +19,8 @@ void FileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
 	if (!fileFind(path)) {
 		StringFixAdapter* fix = new StringFixAdapter();
 		vector<string>* tokens = new vector<string>();
-		delete fix;
 		fix->split(path, '\\', tokens);
+		delete fix;
 		for (int i = 0; i < tokens->size() - 1; i++) {
 			string tempPath = tokens->at(0);
 			for (int j = 1; j <= i; j++) {

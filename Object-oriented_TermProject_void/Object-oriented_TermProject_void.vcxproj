@@ -147,6 +147,8 @@
   <ItemGroup>
     <ClInclude Include="FileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
+    <ClInclude Include="SignUpInAdapter.h" />
+    <ClInclude Include="SignUpInClient.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StringFixAdapter.h" />
     <ClInclude Include="StringFixClient.h" />
@@ -156,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="FileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />
+    <ClCompile Include="SignUpInAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
