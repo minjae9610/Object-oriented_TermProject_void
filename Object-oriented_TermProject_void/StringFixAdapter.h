@@ -1,12 +1,12 @@
 #pragma once
 #include <iostream>
-#include <string>
 #include <vector>
+//#include "StringFixClient.h"
 
 using namespace std;
 
-class StringFixAdapter {
+class StringFixAdapter {//: public StringFixClient{
 public:
-	void split(const string &str, char delim, vector<string>* tokens);
-	void removeCharInString(char* str, char* ch);
+	void split(const string &, char, vector<string>*);// override;
+	void removeCharInString(char*, char*);// override;
 };

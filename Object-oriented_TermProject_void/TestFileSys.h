@@ -7,7 +7,7 @@ public:
 		vector<const char *>* contents = new vector<const char*>();
 		contents->push_back("테스트1");
 		contents->push_back("테스트2");
-		FileSystemAdapter* fileSys = new FileSystemAdapter();
+		FileSystemClient* fileSys = new FileSystemAdapter();
 		fileSys->fileOut("test1\\test.txt", contents);
 		delete fileSys;
 

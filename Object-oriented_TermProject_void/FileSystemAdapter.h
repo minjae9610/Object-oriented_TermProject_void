@@ -1,15 +1,14 @@
 #pragma once
 #include <fstream>
 #include <direct.h>
+#include "FileSystemClient.h"
 #include "StringFixAdapter.h"
 
-using namespace std;
-
-class FileSystemAdapter{
+class FileSystemAdapter : public FileSystemClient {
 public:
-	void fileIn(const char *, vector<const char *>*);
-	void fileOut(char *, vector<const char *>*);
-	void fileRemove(const char *, int *);
+	void fileIn(const char *, vector<const char *>*) override;
+	void fileOut(char *, vector<const char *>*) override;
+	void fileRemove(const char *, int *) override;
 private:
-	bool fileFind(const char *);
+	bool fileFind(const char *) override;
 };
