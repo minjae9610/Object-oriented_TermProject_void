@@ -2,8 +2,6 @@
 #include <iostream>
 #include "StringFixClient.h"
 
-using namespace std;
-
 class StringFixAdapter : public StringFixClient{
 public:
 	void split(const string &, char, vector<string>*) override;
