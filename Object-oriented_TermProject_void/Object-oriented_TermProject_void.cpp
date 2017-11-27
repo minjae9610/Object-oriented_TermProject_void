@@ -3,9 +3,8 @@
 
 int main()
 {
-	TestFileSys* test = new TestFileSys();
-	test->test1();
-	delete test;
+	TestFileSys test;
+	test.test1();
     return 0;
 }
 

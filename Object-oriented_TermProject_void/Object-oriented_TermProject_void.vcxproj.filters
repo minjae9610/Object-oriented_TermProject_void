@@ -45,6 +45,12 @@
     <ClInclude Include="SignUpInAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="BinaryFileSystemClient.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryFileSystemAdapter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
