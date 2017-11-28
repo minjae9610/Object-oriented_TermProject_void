@@ -146,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryFileSystemAdapter.h" />
-    <ClInclude Include="BinaryFileSystemClient.h" />
     <ClInclude Include="FileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
     <ClInclude Include="SignUpInAdapter.h" />
@@ -158,6 +157,7 @@
     <ClInclude Include="TestFileSys.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryFileSystemAdapter.cpp" />
     <ClCompile Include="FileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />
     <ClCompile Include="SignUpInAdapter.cpp" />

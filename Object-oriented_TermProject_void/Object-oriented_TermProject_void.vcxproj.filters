@@ -45,9 +45,6 @@
     <ClInclude Include="SignUpInAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryFileSystemClient.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="BinaryFileSystemAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -66,6 +63,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SignUpInAdapter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -36,16 +36,3 @@ void FileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
 	outFile << contents->at(contents->size() - 1);
 	outFile.close();
 }
-
-void FileSystemAdapter::fileRemove(const char* path, int* isFileRemoved)
-{
-	*isFileRemoved = remove(path);
-}
-
-bool FileSystemAdapter::fileFind(const char* path)
-{
-	ifstream fileFind(path);
-	bool find = fileFind.is_open();
-	fileFind.close();
-	return find;
-}
