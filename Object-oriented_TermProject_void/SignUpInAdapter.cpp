@@ -15,13 +15,12 @@ SignUpInAdapter::SignUpInAdapter()
 	userLoginInfo = new map<const char*, const char*>();
 	path = "SystemData\\UserLoginInfo.LoginInfoDB";
 	vector<const char*>* tempLoginInfo = new vector<const char*>();
-	FileSystemClient* fileSys = new FileSystemAdapter();
-	fileSys->fileIn(path, tempLoginInfo);
-	delete fileSys;
-	StringFixAdapter* fix = new StringFixAdapter();
+	FileSystemAdapter fileSys;
+	fileSys.fileIn(path, tempLoginInfo);
+	StringFixAdapter fix;
 	vector<string>* tokens = new vector<string>();
 	for (int i = 0; i < tempLoginInfo->size(); i++)
-		fix->split(tempLoginInfo->at(i), ' ', tokens);
+		fix.split(tempLoginInfo->at(i), ' ', tokens);
 	for (int i = 0; i < tokens->size() / 2; i++) {
 		string* tempID = new string();
 		*tempID = tokens->at(2 * i).substr(0, tokens->at(2 * i).length());
@@ -30,7 +29,6 @@ SignUpInAdapter::SignUpInAdapter()
 		userLoginInfo->insert({ (*tempID).c_str(), (*tempPW).c_str() });
 	}
 	delete tokens;
-	delete fix;
 	delete tempLoginInfo;
 }
 
@@ -50,9 +48,8 @@ void SignUpInAdapter::signUp(const char* ID, const char* PW, bool* success)
 		*temp += it->second;
 		tempLoginInfo->push_back((*temp).c_str());
 	}
-	FileSystemClient* fileSys = new FileSystemAdapter();
-	fileSys->fileOut(path, tempLoginInfo);
-	delete fileSys;
+	FileSystemAdapter fileSys;
+	fileSys.fileOut(path, tempLoginInfo);
 	delete tempLoginInfo;
 	*success = true;
 }
@@ -83,9 +80,8 @@ void SignUpInAdapter::DeleteAccount(const char* ID, const char* PW, bool* succes
 				*temp += it->second;
 				tempLoginInfo->push_back((*temp).c_str());
 			}
-			FileSystemClient* fileSys = new FileSystemAdapter();
-			fileSys->fileOut(path, tempLoginInfo);
-			delete fileSys;
+			FileSystemAdapter fileSys;
+			fileSys.fileOut(path, tempLoginInfo);
 			delete tempLoginInfo;
 			*success = true;
 			return;
