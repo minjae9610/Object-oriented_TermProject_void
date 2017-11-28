@@ -17,6 +17,8 @@ SignUpInAdapter::SignUpInAdapter()
 	vector<const char*>* tempLoginInfo = new vector<const char*>();
 	FileSystemAdapter fileSys;
 	fileSys.fileIn(path, tempLoginInfo);
+	BinaryFileSystemAdapter file;
+	file.fileIn("test.txt", userLoginInfo);
 	StringFixAdapter fix;
 	vector<string>* tokens = new vector<string>();
 	for (int i = 0; i < tempLoginInfo->size(); i++)
@@ -50,6 +52,8 @@ void SignUpInAdapter::signUp(const char* ID, const char* PW, bool* success)
 	}
 	FileSystemAdapter fileSys;
 	fileSys.fileOut(path, tempLoginInfo);
+	BinaryFileSystemAdapter file;
+	file.fileOut("test.txt", userLoginInfo);
 	delete tempLoginInfo;
 	*success = true;
 }
