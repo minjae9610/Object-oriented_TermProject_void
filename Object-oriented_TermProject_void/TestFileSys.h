@@ -1,5 +1,6 @@
 #pragma once
 #include "SignUpInAdapter.h"
+#include "VectorFileSystemAdapter.h"
 
 class TestFileSys {
 public:
@@ -8,7 +9,7 @@ public:
 		vector<const char *>* contents = new vector<const char*>();
 		contents->push_back("테스트1");
 		contents->push_back("테스트2");
-		FileSystemAdapter fileSys;
+		VectorFileSystemAdapter fileSys;
 		fileSys.fileOut("test1\\test.txt", contents);
 		contents->clear();
 		cout << endl;

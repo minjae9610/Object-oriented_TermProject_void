@@ -1,30 +1,30 @@
 #include "stdafx.h"
-#include "BinaryFileSystemAdapter.h"
+#include "MapBinaryFileSystemAdapter.h"
 
-void BinaryFileSystemAdapter::fileIn(const char * path, map<const char*, const char*>* st) {
+void MapBinaryFileSystemAdapter::fileIn(const char * path, map<const char*, const char*>* st) {
 	if (fileFind(path)) {
 		ifstream inFile(path, ios::in | ios::binary);
-		int32_t sizeMap = 0;
+		int sizeMap = 0;
 		inFile.read((char *)&sizeMap, sizeof(sizeMap));
 		for (int i = 0; i < sizeMap; i++)
 		{
-			int32_t sizeStrKey = 0;
+			int sizeStrKey = 0;
 			inFile.read((char *)&sizeStrKey, sizeof(sizeStrKey));
-			string tempKey = "";
-			inFile.read((char *)&tempKey, sizeStrKey);
+			char* tempKey = new char[sizeStrKey + 1]();
+			inFile.read(tempKey, sizeStrKey);
 
-			int32_t sizeStrValue = 0;
+			int sizeStrValue = 0;
 			inFile.read((char *)&sizeStrValue, sizeof(sizeStrValue));
-			string tempValue = "";
-			inFile.read((char *)&tempValue, sizeStrKey);
+			char* tempValue = new char[sizeStrValue + 1]();
+			inFile.read(tempValue, sizeStrValue);
 
-			//				st->insert({ tempKey, tempValue });
+			st->insert(map<const char *, const char *>::value_type(tempKey, tempValue));
 		}
 		inFile.close();
 	}
 }
 
-void BinaryFileSystemAdapter::fileOut(char * path, map<const char*, const char*>* st)
+void MapBinaryFileSystemAdapter::fileOut(char * path, map<const char*, const char*>* st)
 {
 	if (!fileFind(path)) {
 		StringFixAdapter fix;
@@ -41,17 +41,17 @@ void BinaryFileSystemAdapter::fileOut(char * path, map<const char*, const char*>
 		delete tokens;
 	}
 	ofstream outFile(path, ios::out | ios::binary);
-	int32_t sizeMap = st->size();
+	int sizeMap = st->size();
 	outFile.write((const char *)&sizeMap, sizeof(sizeMap));
 	for (map<const char *, const char *>::iterator it = st->begin(); it != st->end(); ++it)
 	{
 		string tempKey = it->first;
-		int32_t sizeStrKey = tempKey.length() + 1;
+		int sizeStrKey = tempKey.length() + 1;
 		outFile.write((const char *)&sizeStrKey, sizeof(sizeStrKey));
 		outFile.write(tempKey.c_str(), sizeStrKey);
 
 		string tempValue = it->second;
-		int32_t sizeStrValue = tempValue.length() + 1;
+		int sizeStrValue = tempValue.length() + 1;
 		outFile.write((const char *)&sizeStrValue, sizeof(sizeStrValue));
 		outFile.write(tempValue.c_str(), sizeStrValue);
 	}

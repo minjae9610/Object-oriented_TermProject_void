@@ -1,6 +1,5 @@
 #pragma once
-#include "FileSystemAdapter.h"
-#include "BinaryFileSystemAdapter.h"
+#include "MapBinaryFileSystemAdapter.h"
 #include "SignUpInClient.h"
 
 class SignUpInAdapter : public SignUpInClient {

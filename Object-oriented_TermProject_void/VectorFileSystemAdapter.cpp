@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "FileSystemAdapter.h"
+#include "VectorFileSystemAdapter.h"
 
-void FileSystemAdapter::fileIn(const char* path, vector<const char*>* contents)
+void VectorFileSystemAdapter::fileIn(const char* path, vector<const char*>* contents)
 {
 	if (fileFind(path)) {
 		ifstream inFile(path);
@@ -14,7 +14,7 @@ void FileSystemAdapter::fileIn(const char* path, vector<const char*>* contents)
 	}
 }
 
-void FileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
+void VectorFileSystemAdapter::fileOut(char* path, vector<const char*>* contents)
 {
 	if (!fileFind(path)) {
 		StringFixAdapter fix;

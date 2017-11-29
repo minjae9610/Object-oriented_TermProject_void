@@ -24,9 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FileSystemAdapter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TestFileSys.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -45,7 +42,10 @@
     <ClInclude Include="SignUpInAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryFileSystemAdapter.h">
+    <ClInclude Include="MapBinaryFileSystemAdapter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorFileSystemAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,13 +59,13 @@
     <ClCompile Include="StringFixAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FileSystemAdapter.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SignUpInAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="BinaryFileSystemAdapter.cpp">
+    <ClCompile Include="MapBinaryFileSystemAdapter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
