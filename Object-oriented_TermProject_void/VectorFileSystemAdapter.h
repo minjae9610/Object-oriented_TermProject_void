@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <direct.h>
 #include "FileSystemClient.h"
 #include "StringFixAdapter.h"

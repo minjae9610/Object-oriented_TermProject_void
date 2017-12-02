@@ -1,5 +1,7 @@
 #pragma once
 #include <fstream>
+#include <io.h>
+#include <vector>
 
 using namespace std;
 
@@ -16,6 +18,17 @@ public:
 		bool find = fileFind.is_open();
 		fileFind.close();
 		return find;
+	}
+	void fileListFind(const char* path, vector<const char *>* files) {
+		_finddata_t fd;
+		long handle = _findfirst(path, &fd);
+		do{
+			string* tempName = new string();
+			*tempName = fd.name;
+			files->push_back((*tempName).c_str());
+		}while (_findnext(handle, &fd) != -1);
+		_findclose(handle);
+		return;
 	}
 	void mkDir(const char* path) {
 		StringFixAdapter fix;

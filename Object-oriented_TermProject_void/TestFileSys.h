@@ -22,26 +22,48 @@ public:
 		contents->clear();
 		cout << endl;
 
+		cout << "파일 리스트 보기 테스트 1 (프로젝트 파일 전체 확인)" << endl;
+		vector<const char *>* fileList = new vector<const char *>();
+		fileSys.fileListFind("*.*", fileList);
+		for (int i = 0; i < fileList->size(); i++)
+			cout << fileList->at(i) << endl;
+		fileList->clear();
+		cout << endl;
+
+		cout << "파일 리스트 보기 테스트 2 (헤더 파일 전체 확인)" << endl;
+		fileSys.fileListFind("*.h", fileList);
+		for (int i = 0; i < fileList->size(); i++)
+			cout << fileList->at(i) << endl;
+		fileList->clear();
+		cout << endl;
+
+		cout << "파일 리스트 보기 테스트 3 (cpp 파일 전체 확인)" << endl;
+		fileSys.fileListFind("*.cpp", fileList);
+		for (int i = 0; i < fileList->size(); i++)
+			cout << fileList->at(i) << endl;
+		fileList->clear();
+		cout << endl;
+
 		cout << "파일 읽기 테스트 1 (test1 폴더 안의 test.txt 파일 읽기)" << endl;
 		fileSys.fileIn("test1\\test.txt", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
-		cout << endl;
 		contents->clear();
+		cout << endl;
 
 		cout << "파일 읽기 테스트 2 (test1 폴더 안의 test2 폴더 안의 test.txt 파일 읽기)" << endl;
 		fileSys.fileIn("test1\\test2\\test.txt", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
-		cout << endl;
 		contents->clear();
+		cout << endl;
 
 		cout << "파일 읽기 테스트 3 (존재하지 않는 파일 읽기)" << endl;
 		fileSys.fileIn("asadasd", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
-		cout << endl;
 		contents->clear();
+		cout << endl;
 		delete contents;
 
 		cout << "파일 삭제 테스트 1 (test1 폴더 안의 test2 폴더 안의 test.txt 삭제)" << endl;
