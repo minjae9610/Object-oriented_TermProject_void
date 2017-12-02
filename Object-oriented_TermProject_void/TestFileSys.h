@@ -197,5 +197,26 @@ public:
 		delete tempContents;
 		delete tempPermissions;
 		cout << endl;
+
+		cout << "파일 매니저 파일 리스트 보기 테스트" << endl;
+		fileList = new vector<const char *>();
+		FM.fileList(fileList);
+		for (int i = 0; i < fileList->size(); i++)
+			cout << fileList->at(i) << endl;
+		fileList->clear();
+		delete fileList;
+		cout << endl;
+
+		cout << "파일 매니저 파일 삭제 테스트 1 (없는 파일 삭제)" << endl;
+		isFileRemoved = 0;
+		FM.fileRemove("dasijmi", &isFileRemoved);
+		cout << isFileRemoved << endl;
+		cout << endl;
+
+		cout << "파일 매니저 파일 삭제 테스트 2 (testFMFile 파일 삭제)" << endl;
+		isFileRemoved = 0;
+		FM.fileRemove("testFMFile", &isFileRemoved);
+		cout << isFileRemoved << endl;
+		cout << endl;
 	}
 };
