@@ -71,5 +71,8 @@
     <ClCompile Include="VectorFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 #include "SignUpInAdapter.h"
 #include "VectorFileSystemAdapter.h"
+#include "FileManager.h"
 
 class TestFileSys {
 public:
@@ -42,6 +43,7 @@ public:
 		for (int i = 0; i < fileList->size(); i++)
 			cout << fileList->at(i) << endl;
 		fileList->clear();
+		delete fileList;
 		cout << endl;
 
 		cout << "파일 읽기 테스트 1 (test1 폴더 안의 test.txt 파일 읽기)" << endl;
@@ -165,6 +167,35 @@ public:
 		isFileRemoved = 0;
 		fileSys.fileRemove("SystemData\\UserLoginInfo.LoginInfoDB", &isFileRemoved);
 		cout << isFileRemoved << endl;
+		cout << endl;
+
+		cout << "파일 매니저 파일 쓰기 테스트" << endl;
+		isFileRemoved = 0;
+		FileManager FM;
+		vector<const char*>* tempContents = new vector<const char*>();
+		tempContents->push_back("장실좀 - 황동준");
+		tempContents->push_back("배고파 - 마니마니");
+		tempContents->push_back("배그합시다 여러분 - 김민재");
+		vector<const char*>* tempPermissions = new vector<const char*>();
+		tempPermissions->push_back("황동준");
+		tempPermissions->push_back("김민재");
+		tempPermissions->push_back("이병만");
+		tempPermissions->push_back("허효선");
+		FM.fileWirte("testFMFile", tempContents, tempPermissions);
+		tempContents->clear();
+		tempPermissions->clear();
+		cout << endl;
+
+		cout << "파일 매니저 파일 읽기 테스트" << endl;
+		FM.fileRead("testFMFile", tempContents, tempPermissions);
+		for (int i = 0; i < tempPermissions->size(); i++)
+			cout << tempPermissions->at(i) << endl;
+		for (int i = 0; i < tempContents->size(); i++)
+			cout << tempContents->at(i) << endl;
+		tempContents->clear();
+		tempPermissions->clear();
+		delete tempContents;
+		delete tempPermissions;
 		cout << endl;
 	}
 };

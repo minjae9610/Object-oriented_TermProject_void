@@ -158,6 +158,7 @@
     <ClInclude Include="TestFileSys.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />

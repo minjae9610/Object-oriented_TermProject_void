@@ -20,3 +20,19 @@ void StringFixAdapter::removeCharInString(char * str, char * ch)
 	}
 	delete sptr;
 }
+
+void StringFixAdapter::intToChar(const int value, char** str)
+{
+	stringstream ss;
+	ss << value;
+	string temp = ss.str();
+	vector<char>* writable = new vector<char>(temp.begin(), temp.end());
+	writable->push_back('\0');
+	*str = &writable->at(0);
+}
+
+void StringFixAdapter::charToInt(int* value, const char* str)
+{
+	stringstream ss(str);
+	ss >> *value;
+}
