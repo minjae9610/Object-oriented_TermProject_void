@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="FileSystemForWindow.h" />
     <ClInclude Include="MapBinaryFileSystemAdapter.h" />
     <ClInclude Include="VectorFileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
