@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "MapBinaryFileSystemAdapter.h"
 
-void MapBinaryFileSystemAdapter::fileIn(const char * path, map<const char*, const char*>* st) {
+void MapBinaryFileSystemAdapter::fileIn(const char * path, map<const char*, const char*>* st)
+{
 	if (fileFind(path)) {
 		ifstream inFile(path, ios::in | ios::binary);
 		int sizeMap = 0;

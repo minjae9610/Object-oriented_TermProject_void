@@ -1,6 +1,7 @@
 #pragma once
 #include "SignUpInAdapter.h"
 #include "VectorFileSystemAdapter.h"
+#include "VectorBinaryFileSystemAdapter.h"
 #include "FileManager.h"
 
 class TestFileSys {

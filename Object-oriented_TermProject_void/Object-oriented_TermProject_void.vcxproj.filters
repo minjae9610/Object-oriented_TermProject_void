@@ -54,6 +54,9 @@
     <ClInclude Include="FileSystemForWindow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="VectorBinaryFileSystemAdapter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -75,6 +78,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="FileManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorBinaryFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
