@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <direct.h>
 #include "StringFixAdapter.h"
 #include "VectorFileSystemAdapter.h"
 

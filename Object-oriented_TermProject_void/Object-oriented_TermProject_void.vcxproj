@@ -148,6 +148,8 @@
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="FileSystemForWindow.h" />
     <ClInclude Include="MapBinaryFileSystemAdapter.h" />
+    <ClInclude Include="Permission.h" />
+    <ClInclude Include="UserPermissionManager.h" />
     <ClInclude Include="VectorBinaryFileSystemAdapter.h" />
     <ClInclude Include="VectorFileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
@@ -162,6 +164,8 @@
   <ItemGroup>
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
+    <ClCompile Include="Permission.cpp" />
+    <ClCompile Include="UserPermissionManager.cpp" />
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />

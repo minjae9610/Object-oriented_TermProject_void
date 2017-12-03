@@ -1,7 +1,7 @@
 #pragma once
 #include "SignUpInAdapter.h"
 #include "VectorFileSystemAdapter.h"
-#include "VectorBinaryFileSystemAdapter.h"
+#include "UserPermissionManager.h"
 #include "FileManager.h"
 
 class TestFileSys {
@@ -219,5 +219,17 @@ public:
 		FM.fileRemove("testFMFile", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
+
+		cout << "sdf" << endl;
+		UserPermissionManager UPM;
+		vector<Permission*>* test = new vector<Permission*>();
+		test->push_back(new Permission("A"));
+		test->push_back(new Permission("Q"));
+		test->push_back(new Permission("W"));
+		test->push_back(new Permission("R"));
+		test->push_back(new Permission("B"));
+		test->push_back(new Permission("G"));
+		test->push_back(new Permission("H"));
+		UPM.fileRenewal("Ȳ", test);
 	}
 };
