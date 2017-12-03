@@ -147,14 +147,13 @@
   <ItemGroup>
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="FileSystemForWindow.h" />
+    <ClInclude Include="LoginManager.h" />
     <ClInclude Include="MapBinaryFileSystemAdapter.h" />
     <ClInclude Include="Permission.h" />
     <ClInclude Include="UserPermissionManager.h" />
     <ClInclude Include="VectorBinaryFileSystemAdapter.h" />
     <ClInclude Include="VectorFileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
-    <ClInclude Include="SignUpInAdapter.h" />
-    <ClInclude Include="SignUpInClient.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StringFixAdapter.h" />
     <ClInclude Include="StringFixClient.h" />
@@ -163,13 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="LoginManager.cpp" />
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="Permission.cpp" />
     <ClCompile Include="UserPermissionManager.cpp" />
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />
-    <ClCompile Include="SignUpInAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -36,12 +36,6 @@
     <ClInclude Include="StringFixClient.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SignUpInClient.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="SignUpInAdapter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="MapBinaryFileSystemAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -63,6 +57,9 @@
     <ClInclude Include="Permission.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="LoginManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -72,9 +69,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="StringFixAdapter.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SignUpInAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp">
@@ -93,6 +87,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Permission.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

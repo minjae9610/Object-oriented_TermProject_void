@@ -3,8 +3,8 @@
 
 int main()
 {
-	TestFileSys test;
-	test.test1();
+	TestFileSys TFS;
+	TFS.test1();
     return 0;
 }
 

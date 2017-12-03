@@ -1,7 +1,7 @@
 #pragma once
-#include "SignUpInAdapter.h"
 #include "VectorFileSystemAdapter.h"
 #include "UserPermissionManager.h"
+#include "LoginManager.h"
 #include "FileManager.h"
 
 class TestFileSys {
@@ -11,8 +11,8 @@ public:
 		vector<const char *>* contents = new vector<const char*>();
 		contents->push_back("테스트1");
 		contents->push_back("테스트2");
-		VectorFileSystemAdapter fileSys;
-		fileSys.fileOut("test1\\test.txt", contents);
+		VectorFileSystemAdapter VFSA;
+		VFSA.fileOut("test1\\test.txt", contents);
 		contents->clear();
 		cout << endl;
 
@@ -20,27 +20,27 @@ public:
 		contents->push_back("테스트1");
 		contents->push_back("테스트2");
 		contents->push_back("테스트3");
-		fileSys.fileOut("test1\\test2\\test.txt", contents);
+		VFSA.fileOut("test1\\test2\\test.txt", contents);
 		contents->clear();
 		cout << endl;
 
 		cout << "파일 리스트 보기 테스트 1 (프로젝트 파일 전체 확인)" << endl;
 		vector<const char *>* fileList = new vector<const char *>();
-		fileSys.fileListFind("*.*", fileList);
+		VFSA.fileListFind("*.*", fileList);
 		for (int i = 0; i < fileList->size(); i++)
 			cout << fileList->at(i) << endl;
 		fileList->clear();
 		cout << endl;
 
 		cout << "파일 리스트 보기 테스트 2 (헤더 파일 전체 확인)" << endl;
-		fileSys.fileListFind("*.h", fileList);
+		VFSA.fileListFind("*.h", fileList);
 		for (int i = 0; i < fileList->size(); i++)
 			cout << fileList->at(i) << endl;
 		fileList->clear();
 		cout << endl;
 
 		cout << "파일 리스트 보기 테스트 3 (cpp 파일 전체 확인)" << endl;
-		fileSys.fileListFind("*.cpp", fileList);
+		VFSA.fileListFind("*.cpp", fileList);
 		for (int i = 0; i < fileList->size(); i++)
 			cout << fileList->at(i) << endl;
 		fileList->clear();
@@ -48,21 +48,21 @@ public:
 		cout << endl;
 
 		cout << "파일 읽기 테스트 1 (test1 폴더 안의 test.txt 파일 읽기)" << endl;
-		fileSys.fileIn("test1\\test.txt", contents);
+		VFSA.fileIn("test1\\test.txt", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
 		contents->clear();
 		cout << endl;
 
 		cout << "파일 읽기 테스트 2 (test1 폴더 안의 test2 폴더 안의 test.txt 파일 읽기)" << endl;
-		fileSys.fileIn("test1\\test2\\test.txt", contents);
+		VFSA.fileIn("test1\\test2\\test.txt", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
 		contents->clear();
 		cout << endl;
 
 		cout << "파일 읽기 테스트 3 (존재하지 않는 파일 읽기)" << endl;
-		fileSys.fileIn("asadasd", contents);
+		VFSA.fileIn("asadasd", contents);
 		for (int i = 0; i < contents->size(); i++)
 			cout << contents->at(i) << endl;
 		contents->clear();
@@ -71,102 +71,83 @@ public:
 
 		cout << "파일 삭제 테스트 1 (test1 폴더 안의 test2 폴더 안의 test.txt 삭제)" << endl;
 		int isFileRemoved = 0;
-		fileSys.fileRemove("test1\\test2\\test.txt", &isFileRemoved);
+		VFSA.fileRemove("test1\\test2\\test.txt", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 
 		cout << "파일 삭제 테스트 2 (test1 폴더 안의 test.txt 삭제)" << endl;
 		isFileRemoved = 0;
-		fileSys.fileRemove("test1\\test.txt", &isFileRemoved);
+		VFSA.fileRemove("test1\\test.txt", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 
 		cout << "파일 삭제 테스트 3 (없는 파일 삭제)" << endl;
 		isFileRemoved = 0;
-		fileSys.fileRemove("hguyguy", &isFileRemoved);
+		VFSA.fileRemove("hguyguy", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 
 		cout << "회원 가입 테스트 1 (testID1, testPW1)" << endl;
 		bool success = false;
-		SignUpInClient* sign = new SignUpInAdapter();
-		sign->signUp("testID1", "testPW1", &success);
-		delete sign;
+		LoginManager LM;
+		LM.signUp("testID1", "testPW1", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 가입 테스트 2 (testID2, testPW2)" << endl;
 		success = false;
-		sign = new SignUpInAdapter();
-		sign->signUp("testID2", "testPW2", &success);
-		delete sign;
+		LM.signUp("testID2", "testPW2", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "존재하는 아이디로 회원 가입 테스트 1 (testID1, testPW3)" << endl;
 		success = false;
-		sign = new SignUpInAdapter();
-		sign->signUp("testID1", "testPW3", &success);
-		delete sign;
+		LM.signUp("testID1", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 1 (없는 아이디로)" << endl;
 		char* ID = "";
-		sign = new SignUpInAdapter();
-		sign->signIn("testID3", "testPW3", &ID);
-		delete sign;
+		LM.signIn("testID3", "testPW3", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 2 (잘못된 비밀번호로)" << endl;
-		sign = new SignUpInAdapter();
-		sign->signIn("testID1", "testPW2", &ID);
-		delete sign;
+		LM.signIn("testID1", "testPW2", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 3 (존재하는 아이디의 알맞은 비밀번호로)" << endl;
-		sign = new SignUpInAdapter();
-		sign->signIn("testID1", "testPW1", &ID);
-		delete sign;
+		LM.signIn("testID1", "testPW1", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그아웃 테스트" << endl;
-		sign = new SignUpInAdapter();
-		sign->signOut(&ID);
-		delete sign;
+		LM.signOut(&ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (testID2 틀린 비밀번호)" << endl;
 		success = false;
-		sign = new SignUpInAdapter();
-		sign->DeleteAccount("testID2", "testPW3", &success);
-		delete sign;
+		LM.DeleteAccount("testID2", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (testID2 맞는 비밀번호)" << endl;
 		success = false;
-		sign = new SignUpInAdapter();
-		sign->DeleteAccount("testID2", "testPW2", &success);
-		delete sign;
+		LM.DeleteAccount("testID2", "testPW2", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (없는 아이디)" << endl;
 		success = false;
-		sign = new SignUpInAdapter();
-		sign->DeleteAccount("testID3", "testPW3", &success);
-		delete sign;
+		LM.DeleteAccount("testID3", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "유져 데이터 베이스 삭제" << endl;
 		isFileRemoved = 0;
-		fileSys.fileRemove("SystemData\\UserLoginInfo.LoginInfoDB", &isFileRemoved);
+		VFSA.fileRemove("SystemData\\UserLoginInfo.LoginInfoDB", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 
@@ -219,17 +200,5 @@ public:
 		FM.fileRemove("testFMFile", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
-
-		cout << "sdf" << endl;
-		UserPermissionManager UPM;
-		vector<Permission*>* test = new vector<Permission*>();
-		test->push_back(new Permission("A"));
-		test->push_back(new Permission("Q"));
-		test->push_back(new Permission("W"));
-		test->push_back(new Permission("R"));
-		test->push_back(new Permission("B"));
-		test->push_back(new Permission("G"));
-		test->push_back(new Permission("H"));
-		UPM.fileRenewal("황", test);
 	}
 };
