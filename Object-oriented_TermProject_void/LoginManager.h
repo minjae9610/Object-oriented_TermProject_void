@@ -1,5 +1,6 @@
 #pragma once
 #include "MapBinaryFileSystemAdapter.h"
+#include "Manager.h"
 
 class LoginManager {
 public:

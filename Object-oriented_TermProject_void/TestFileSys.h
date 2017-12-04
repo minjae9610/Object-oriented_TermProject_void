@@ -1,8 +1,5 @@
 #pragma once
-#include "VectorFileSystemAdapter.h"
-#include "UserPermissionManager.h"
-#include "LoginManager.h"
-#include "FileManager.h"
+#include "Manager.h"
 
 class TestFileSys {
 public:
@@ -143,12 +140,6 @@ public:
 		success = false;
 		LM.DeleteAccount("testID3", "testPW3", &success);
 		cout << success << endl;
-		cout << endl;
-
-		cout << "유져 데이터 베이스 삭제" << endl;
-		isFileRemoved = 0;
-		VFSA.fileRemove("SystemData\\UserLoginInfo.LoginInfoDB", &isFileRemoved);
-		cout << isFileRemoved << endl;
 		cout << endl;
 
 		cout << "파일 매니저 파일 쓰기 테스트" << endl;

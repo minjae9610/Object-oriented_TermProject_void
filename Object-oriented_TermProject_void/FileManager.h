@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-#include "StringFixAdapter.h"
 #include "VectorFileSystemAdapter.h"
 
 class FileManager {
