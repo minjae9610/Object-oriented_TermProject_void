@@ -57,6 +57,7 @@ void LoginManager::DeleteAccount(const char* ID, const char* PW, bool* success)
 			PM.subjectDelete("SystemData\\UserPermissionInfo.VOID_DB", ptr, success);
 			GroupManager GM;
 			GM.subjectDelete("SystemData\\GroupInfo.VOID_DB", ptr, success);
+			*success = true;
 			break;
 		}
 		delete it->first;
