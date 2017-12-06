@@ -60,8 +60,6 @@ void LoginManager::DeleteAccount(const char* ID, const char* PW, bool* success)
 			*success = true;
 			break;
 		}
-		delete it->first;
-		delete it->second;
 	}
 	delete userLoginInfo;
 }
