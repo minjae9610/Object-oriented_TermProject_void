@@ -23,11 +23,13 @@ public:
 	void fileListFind(const char* path, vector<const char *>* files) {
 		_finddata_t fd;
 		long handle = _findfirst(path, &fd);
-		do {
-			string* tempName = new string();
-			*tempName = fd.name;
-			files->push_back((*tempName).c_str());
-		} while (_findnext(handle, &fd) != -1);
+		if (handle != -1) {
+			do {
+				string* tempName = new string();
+				*tempName = fd.name;
+				files->push_back((*tempName).c_str());
+			} while (_findnext(handle, &fd) != -1);
+		}
 		_findclose(handle);
 		return;
 	}

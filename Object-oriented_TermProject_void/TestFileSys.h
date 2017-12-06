@@ -1,5 +1,6 @@
 #pragma once
 #include "Manager.h"
+#include <conio.h>
 
 class TestFileSys {
 public:
@@ -191,5 +192,7 @@ public:
 		FM.fileRemove("testFMFile", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
+
+		_getch();
 	}
 };
