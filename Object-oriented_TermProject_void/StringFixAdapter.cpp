@@ -25,14 +25,19 @@ void StringFixAdapter::intToChar(const int value, char** str)
 {
 	stringstream ss;
 	ss << value;
-	string temp = ss.str();
-	vector<char>* writable = new vector<char>(temp.begin(), temp.end());
-	writable->push_back('\0');
-	*str = &writable->at(0);
+	constToNot(ss.str().c_str(), str);
 }
 
 void StringFixAdapter::charToInt(int* value, const char* str)
 {
 	stringstream ss(str);
 	ss >> *value;
+}
+
+void StringFixAdapter::constToNot(const char* str, char** ptr)
+{
+	string temp = str;
+	vector<char>* writable = new vector<char>(temp.begin(), temp.end());
+	writable->push_back('\0');
+	*ptr = &writable->at(0);
 }

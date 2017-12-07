@@ -31,9 +31,8 @@ void FileManager::fileWirte(char* fileName, vector<const char*>* contents, vecto
 	string temp = "SystemData\\VOID\\";
 	temp += fileName;
 	temp += ".VOID";
-	vector<char> writable(temp.begin(), temp.end());
-	writable.push_back('\0');
-	char* ptr = &writable[0];
+	char* ptr;
+	SFA.constToNot(temp.c_str(), &ptr);
 	VectorFileSystemAdapter VFSA;
 	VFSA.fileOut(ptr, finalContents);
 	delete finalContents;

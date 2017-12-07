@@ -11,10 +11,8 @@ void GroupManager::fileExtraction(char* path, char* name, vector<Group*>* groups
 		SFA.charToInt(&temp, groupFile->at(i + 1));
 		if (!strcmp(groupFile->at(i), name)) {
 			for (int j = 0; j < temp; j++) {
-				string temp = groupFile->at(i + 2 + j);
-				vector<char> writable(temp.begin(), temp.end());
-				writable.push_back('\0');
-				char* ptr = &writable[0];
+				char* ptr;
+				SFA.constToNot(groupFile->at(i + 2 + j), &ptr);
 				groups->push_back(new Group(ptr));
 			}
 		}

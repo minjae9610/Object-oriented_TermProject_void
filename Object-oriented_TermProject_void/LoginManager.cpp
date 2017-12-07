@@ -49,10 +49,9 @@ void LoginManager::DeleteAccount(const char* ID, const char* PW, bool* success)
 		if (!strcmp(it->first, ID) && !strcmp(it->second, PW)) {
 			userLoginInfo->erase(it);
 			MBFSA.fileOut("SystemData\\UserLoginInfo.VOID_DB", userLoginInfo);
-			string temp = ID;
-			vector<char> writable(temp.begin(), temp.end());
-			writable.push_back('\0');
-			char* ptr = &writable[0];
+			StringFixAdapter SFA;
+			char* ptr;
+			SFA.constToNot(ID, &ptr);
 			PermissionManager PM;
 			PM.subjectDelete("SystemData\\UserPermissionInfo.VOID_DB", ptr, success);
 			GroupManager GM;

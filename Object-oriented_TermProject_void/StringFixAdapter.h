@@ -9,4 +9,5 @@ public:
 	void removeCharInString(char*, char*) override;
 	void intToChar(const int, char**) override;
 	void charToInt(int*, const char*) override;
+	void constToNot(const char*, char**) override;
 };
