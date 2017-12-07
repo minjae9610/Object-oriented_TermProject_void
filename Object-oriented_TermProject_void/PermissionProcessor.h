@@ -2,7 +2,7 @@
 #include "VectorBinaryFileSystemAdapter.h"
 #include "Permission.h"
 
-class PermissionManager {
+class PermissionProcessor {
 public:
 	void fileExtraction(char *, char *, vector<Permission*>*);
 	void fileRenewal(char *, char *, vector<Permission*>*);

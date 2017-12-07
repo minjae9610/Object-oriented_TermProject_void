@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "PermissionManager.h"
+#include "PermissionProcessor.h"
 
-void PermissionManager::fileExtraction(char* path, char* name, vector<Permission*>* permissions) {
+void PermissionProcessor::fileExtraction(char* path, char* name, vector<Permission*>* permissions) {
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
 	VBFSA.fileIn(path, permissionFile);
@@ -19,7 +19,7 @@ void PermissionManager::fileExtraction(char* path, char* name, vector<Permission
 	}
 }
 
-void PermissionManager::fileRenewal(char* path, char* name, vector<Permission*>* permissions)
+void PermissionProcessor::fileRenewal(char* path, char* name, vector<Permission*>* permissions)
 {
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
@@ -70,7 +70,7 @@ void PermissionManager::fileRenewal(char* path, char* name, vector<Permission*>*
 	delete permissionFile;
 }
 
-void PermissionManager::subjectList(char* path, vector<const char*>* subjects)
+void PermissionProcessor::subjectList(char* path, vector<const char*>* subjects)
 {
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
@@ -85,7 +85,7 @@ void PermissionManager::subjectList(char* path, vector<const char*>* subjects)
 	delete permissionFile;
 }
 
-void PermissionManager::subjectDelete(char* path, char* name, bool* success)
+void PermissionProcessor::subjectDelete(char* path, char* name, bool* success)
 {
 	*success = false;
 	vector<const char*>* permissionFile = new vector<const char*>();

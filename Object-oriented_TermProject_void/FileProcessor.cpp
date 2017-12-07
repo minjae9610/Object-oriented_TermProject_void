@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "FileManager.h"
+#include "FileProcessor.h"
 
-void FileManager::fileRead(const char* fileName, vector<const char*>* contents, vector<const char*>* permissions)
+void FileProcessor::fileRead(const char* fileName, vector<const char*>* contents, vector<const char*>* permissions)
 {
 	string temp = "SystemData\\VOID\\";
 	temp += fileName;
@@ -18,7 +18,7 @@ void FileManager::fileRead(const char* fileName, vector<const char*>* contents, 
 		contents->push_back(allContents->at(i));
 }
 
-void FileManager::fileWirte(char* fileName, vector<const char*>* contents, vector<const char*>* permissions)
+void FileProcessor::fileWirte(char* fileName, vector<const char*>* contents, vector<const char*>* permissions)
 {
 	vector<const char*>* finalContents = new vector<const char*>();
 	finalContents->reserve(permissions->size() + contents->size() + 1);
@@ -38,7 +38,7 @@ void FileManager::fileWirte(char* fileName, vector<const char*>* contents, vecto
 	delete finalContents;
 }
 
-void FileManager::fileRemove(const char* fileName, int* isFileRemoved)
+void FileProcessor::fileRemove(const char* fileName, int* isFileRemoved)
 {
 	string temp = "SystemData\\VOID\\";
 	temp += fileName;
@@ -47,7 +47,7 @@ void FileManager::fileRemove(const char* fileName, int* isFileRemoved)
 	VFSA.fileRemove(temp.c_str(), isFileRemoved);
 }
 
-void FileManager::fileList(vector<const char*>* fileList)
+void FileProcessor::fileList(vector<const char*>* fileList)
 {
 	VectorFileSystemAdapter VFSA;
 	VFSA.fileListFind("SystemData\\VOID\\*.VOID", fileList);

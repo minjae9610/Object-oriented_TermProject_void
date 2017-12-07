@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "GroupManager.h"
+#include "GroupProcessor.h"
 
-void GroupManager::fileExtraction(char* path, char* name, vector<Group*>* groups) {
+void GroupProcessor::fileExtraction(char* path, char* name, vector<Group*>* groups) {
 	vector<const char*>* groupFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
 	VBFSA.fileIn(path, groupFile);
@@ -22,7 +22,7 @@ void GroupManager::fileExtraction(char* path, char* name, vector<Group*>* groups
 	}
 }
 
-void GroupManager::fileRenewal(char* path, char* name, vector<Group*>* groups)
+void GroupProcessor::fileRenewal(char* path, char* name, vector<Group*>* groups)
 {
 	vector<const char*>* groupFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
@@ -73,7 +73,7 @@ void GroupManager::fileRenewal(char* path, char* name, vector<Group*>* groups)
 	delete groupFile;
 }
 
-void GroupManager::subjectList(char* path, vector<const char*>* subjects)
+void GroupProcessor::subjectList(char* path, vector<const char*>* subjects)
 {
 	vector<const char*>* groupFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
@@ -88,7 +88,7 @@ void GroupManager::subjectList(char* path, vector<const char*>* subjects)
 	delete groupFile;
 }
 
-void GroupManager::subjectDelete(char* path, char* name, bool* success)
+void GroupProcessor::subjectDelete(char* path, char* name, bool* success)
 {
 	*success = false;
 	vector<const char*>* groupFile = new vector<const char*>();
@@ -110,7 +110,7 @@ void GroupManager::subjectDelete(char* path, char* name, bool* success)
 	delete groupFile;
 }
 
-void GroupManager::groupDelete(char* path, char* name)
+void GroupProcessor::groupDelete(char* path, char* name)
 {
 	vector<const char*>* groupFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;

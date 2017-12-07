@@ -1,8 +1,8 @@
 #pragma once
 #include "MapBinaryFileSystemAdapter.h"
-#include "Manager.h"
+#include "Processor.h"
 
-class LoginManager {
+class LoginProcessor {
 public:
 	void signUp(const char *, const char *, bool *);
 	void signIn(char *, const char *, char **);

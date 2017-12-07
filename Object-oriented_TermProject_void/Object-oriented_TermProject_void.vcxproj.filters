@@ -42,9 +42,6 @@
     <ClInclude Include="VectorFileSystemAdapter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FileManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="FileSystemForWindow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -54,19 +51,22 @@
     <ClInclude Include="Permission.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LoginManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PermissionManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Group.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="GroupManager.h">
+    <ClInclude Include="FileProcessor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Manager.h">
+    <ClInclude Include="GroupProcessor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginProcessor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PermissionProcessor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Processor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,25 +86,25 @@
     <ClCompile Include="VectorFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Permission.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LoginManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Group.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PermissionManager.cpp">
+    <ClCompile Include="FileProcessor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="GroupManager.cpp">
+    <ClCompile Include="GroupProcessor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginProcessor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PermissionProcessor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

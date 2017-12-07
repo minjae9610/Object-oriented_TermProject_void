@@ -1,22 +1,22 @@
 #include "stdafx.h"
 #include "Group.h"
-#include "Manager.h"
+#include "Processor.h"
 
 Group::Group(char* name)
 {
 	groupName = name;
 	permissions = new vector<Permission*>();
-	PermissionManager PM;
-	PM.fileExtraction("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
+	PermissionProcessor PP;
+	PP.fileExtraction("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
 	if (permissions->size() == 0)
-		PM.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
+		PP.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
 }
 
 void Group::addPermission(Permission* permission)
 {
 	permissions->push_back(permission);
-	PermissionManager PM;
-	PM.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
+	PermissionProcessor PP;
+	PP.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
 }
 
 void Group::deletePermission(const char* name, bool* success)
@@ -25,8 +25,8 @@ void Group::deletePermission(const char* name, bool* success)
 	searchPermission(name, &perNum);
 	if (perNum != -1) {
 		permissions->erase(permissions->begin() + perNum);
-		PermissionManager PM;
-		PM.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
+		PermissionProcessor PP;
+		PP.fileRenewal("SystemData\\GroupPermissionInfo.VOID_DB", groupName, permissions);
 		*success = true;
 		return;
 	}
@@ -45,10 +45,10 @@ void Group::searchPermission(const char* name, int* num)
 
 void Group::deleteGroup(bool* success)
 {
-	PermissionManager PM;
-	PM.subjectDelete("SystemData\\GroupPermissionInfo.VOID_DB", groupName, success);
-	GroupManager GM;
-	GM.groupDelete("SystemData\\GroupInfo.VOID_DB", groupName);
+	PermissionProcessor PP;
+	PP.subjectDelete("SystemData\\GroupPermissionInfo.VOID_DB", groupName, success);
+	GroupProcessor GP;
+	GP.groupDelete("SystemData\\GroupInfo.VOID_DB", groupName);
 }
 
 char * Group::getGroupName()

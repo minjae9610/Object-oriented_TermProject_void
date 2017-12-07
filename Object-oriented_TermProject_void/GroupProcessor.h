@@ -2,7 +2,7 @@
 #include "VectorBinaryFileSystemAdapter.h"
 #include "Group.h"
 
-class GroupManager {
+class GroupProcessor {
 public:
 	void fileExtraction(char *, char *, vector<Group*>*);
 	void fileRenewal(char *, char *, vector<Group*>*);

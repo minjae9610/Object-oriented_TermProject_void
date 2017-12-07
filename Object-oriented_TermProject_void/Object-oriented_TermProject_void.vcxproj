@@ -145,15 +145,15 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileManager.h" />
+    <ClInclude Include="FileProcessor.h" />
     <ClInclude Include="FileSystemForWindow.h" />
     <ClInclude Include="Group.h" />
-    <ClInclude Include="GroupManager.h" />
-    <ClInclude Include="LoginManager.h" />
-    <ClInclude Include="Manager.h" />
+    <ClInclude Include="GroupProcessor.h" />
+    <ClInclude Include="LoginProcessor.h" />
+    <ClInclude Include="Processor.h" />
     <ClInclude Include="MapBinaryFileSystemAdapter.h" />
     <ClInclude Include="Permission.h" />
-    <ClInclude Include="PermissionManager.h" />
+    <ClInclude Include="PermissionProcessor.h" />
     <ClInclude Include="VectorBinaryFileSystemAdapter.h" />
     <ClInclude Include="VectorFileSystemAdapter.h" />
     <ClInclude Include="FileSystemClient.h" />
@@ -164,13 +164,13 @@
     <ClInclude Include="TestFileSys.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="FileProcessor.cpp" />
     <ClCompile Include="Group.cpp" />
-    <ClCompile Include="GroupManager.cpp" />
-    <ClCompile Include="LoginManager.cpp" />
+    <ClCompile Include="GroupProcessor.cpp" />
+    <ClCompile Include="LoginProcessor.cpp" />
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="Permission.cpp" />
-    <ClCompile Include="PermissionManager.cpp" />
+    <ClCompile Include="PermissionProcessor.cpp" />
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />

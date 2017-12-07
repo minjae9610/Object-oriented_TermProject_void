@@ -1,5 +1,5 @@
 #pragma once
-#include "Manager.h"
+#include "Processor.h"
 #include <conio.h>
 
 class TestFileSys {
@@ -87,65 +87,65 @@ public:
 
 		cout << "회원 가입 테스트 1 (testID1, testPW1)" << endl;
 		bool success = false;
-		LoginManager LM;
-		LM.signUp("testID1", "testPW1", &success);
+		LoginProcessor LP;
+		LP.signUp("testID1", "testPW1", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 가입 테스트 2 (testID2, testPW2)" << endl;
 		success = false;
-		LM.signUp("testID2", "testPW2", &success);
+		LP.signUp("testID2", "testPW2", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "존재하는 아이디로 회원 가입 테스트 1 (testID1, testPW3)" << endl;
 		success = false;
-		LM.signUp("testID1", "testPW3", &success);
+		LP.signUp("testID1", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 1 (없는 아이디로)" << endl;
 		char* ID = "";
-		LM.signIn("testID3", "testPW3", &ID);
+		LP.signIn("testID3", "testPW3", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 2 (잘못된 비밀번호로)" << endl;
-		LM.signIn("testID1", "testPW2", &ID);
+		LP.signIn("testID1", "testPW2", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 3 (존재하는 아이디의 알맞은 비밀번호로)" << endl;
-		LM.signIn("testID1", "testPW1", &ID);
+		LP.signIn("testID1", "testPW1", &ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "로그아웃 테스트" << endl;
-		LM.signOut(&ID);
+		LP.signOut(&ID);
 		cout << ID << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (testID2 틀린 비밀번호)" << endl;
 		success = false;
-		LM.DeleteAccount("testID2", "testPW3", &success);
+		LP.DeleteAccount("testID2", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (testID2 맞는 비밀번호)" << endl;
 		success = false;
-		LM.DeleteAccount("testID2", "testPW2", &success);
+		LP.DeleteAccount("testID2", "testPW2", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (없는 아이디)" << endl;
 		success = false;
-		LM.DeleteAccount("testID3", "testPW3", &success);
+		LP.DeleteAccount("testID3", "testPW3", &success);
 		cout << success << endl;
 		cout << endl;
 
 		cout << "파일 매니저 파일 쓰기 테스트" << endl;
 		isFileRemoved = 0;
-		FileManager FM;
+		FileProcessor FP;
 		vector<const char*>* tempContents = new vector<const char*>();
 		tempContents->push_back("장실좀 - 황동준");
 		tempContents->push_back("배고파 - 마니마니");
@@ -155,13 +155,13 @@ public:
 		tempPermissions->push_back("김민재");
 		tempPermissions->push_back("이병만");
 		tempPermissions->push_back("허효선");
-		FM.fileWirte("testFMFile", tempContents, tempPermissions);
+		FP.fileWirte("testFPFile", tempContents, tempPermissions);
 		tempContents->clear();
 		tempPermissions->clear();
 		cout << endl;
 
 		cout << "파일 매니저 파일 읽기 테스트" << endl;
-		FM.fileRead("testFMFile", tempContents, tempPermissions);
+		FP.fileRead("testFPFile", tempContents, tempPermissions);
 		for (int i = 0; i < tempPermissions->size(); i++)
 			cout << tempPermissions->at(i) << endl;
 		for (int i = 0; i < tempContents->size(); i++)
@@ -174,7 +174,7 @@ public:
 
 		cout << "파일 매니저 파일 리스트 보기 테스트" << endl;
 		fileList = new vector<const char *>();
-		FM.fileList(fileList);
+		FP.fileList(fileList);
 		for (int i = 0; i < fileList->size(); i++)
 			cout << fileList->at(i) << endl;
 		fileList->clear();
@@ -183,13 +183,13 @@ public:
 
 		cout << "파일 매니저 파일 삭제 테스트 1 (없는 파일 삭제)" << endl;
 		isFileRemoved = 0;
-		FM.fileRemove("dasijmi", &isFileRemoved);
+		FP.fileRemove("dasijmi", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 
-		cout << "파일 매니저 파일 삭제 테스트 2 (testFMFile 파일 삭제)" << endl;
+		cout << "파일 매니저 파일 삭제 테스트 2 (testFPFile 파일 삭제)" << endl;
 		isFileRemoved = 0;
-		FM.fileRemove("testFMFile", &isFileRemoved);
+		FP.fileRemove("testFPFile", &isFileRemoved);
 		cout << isFileRemoved << endl;
 		cout << endl;
 

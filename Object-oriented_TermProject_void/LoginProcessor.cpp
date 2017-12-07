@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "LoginManager.h"
+#include "LoginProcessor.h"
 
-void LoginManager::signUp(const char* ID, const char* PW, bool* success)
+void LoginProcessor::signUp(const char* ID, const char* PW, bool* success)
 {
 	*success = true;
 	map<const char*, const char*>* userLoginInfo = new map<const char*, const char*>();
@@ -19,7 +19,7 @@ void LoginManager::signUp(const char* ID, const char* PW, bool* success)
 	delete userLoginInfo;
 }
 
-void LoginManager::signIn(char* inputID, const char* inputPW, char **ID)
+void LoginProcessor::signIn(char* inputID, const char* inputPW, char **ID)
 {
 	map<const char*, const char*>* userLoginInfo = new map<const char*, const char*>();
 	MapBinaryFileSystemAdapter MBFSA;
@@ -33,13 +33,13 @@ void LoginManager::signIn(char* inputID, const char* inputPW, char **ID)
 	delete userLoginInfo;
 }
 
-void LoginManager::signOut(char** ID)
+void LoginProcessor::signOut(char** ID)
 {
 	if (*ID != "")
 		*ID = "";
 }
 
-void LoginManager::DeleteAccount(const char* ID, const char* PW, bool* success)
+void LoginProcessor::DeleteAccount(const char* ID, const char* PW, bool* success)
 {
 	*success = false;
 	map<const char*, const char*>* userLoginInfo = new map<const char*, const char*>();
@@ -52,10 +52,10 @@ void LoginManager::DeleteAccount(const char* ID, const char* PW, bool* success)
 			StringFixAdapter SFA;
 			char* ptr;
 			SFA.constToNot(ID, &ptr);
-			PermissionManager PM;
-			PM.subjectDelete("SystemData\\UserPermissionInfo.VOID_DB", ptr, success);
-			GroupManager GM;
-			GM.subjectDelete("SystemData\\GroupInfo.VOID_DB", ptr, success);
+			PermissionProcessor PP;
+			PP.subjectDelete("SystemData\\UserPermissionInfo.VOID_DB", ptr, success);
+			GroupProcessor GP;
+			GP.subjectDelete("SystemData\\GroupInfo.VOID_DB", ptr, success);
 			*success = true;
 			break;
 		}
