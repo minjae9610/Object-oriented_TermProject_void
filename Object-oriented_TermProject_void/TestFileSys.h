@@ -104,6 +104,14 @@ public:
 		cout << success << endl;
 		cout << endl;
 
+		cout << "유저 목록 추출 테스트" << endl;
+		vector<const char*>* userList = new vector<const char*>();
+		LP.getUserList(userList);
+		for (int i = 0; i < userList->size(); i++)
+			cout << userList->at(i) << endl;
+		delete userList;
+		cout << endl;
+
 		cout << "로그인 테스트 1 (없는 아이디로)" << endl;
 		char* ID = "";
 		LP.signIn("testID3", "testPW3", &ID);

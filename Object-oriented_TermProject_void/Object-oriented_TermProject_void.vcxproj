@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="User.h" />
     <ClInclude Include="FileProcessor.h" />
     <ClInclude Include="FileSystemForWindow.h" />
     <ClInclude Include="Group.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="Permission.cpp" />
     <ClCompile Include="PermissionProcessor.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />
     <ClCompile Include="Object-oriented_TermProject_void.cpp" />
