@@ -51,13 +51,7 @@
     <ClInclude Include="Permission.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Group.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="FileProcessor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="GroupProcessor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="LoginProcessor.h">
@@ -70,6 +64,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Run.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintForConsole.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintClient.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,13 +98,7 @@
     <ClCompile Include="Permission.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Group.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="FileProcessor.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="GroupProcessor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="LoginProcessor.cpp">
@@ -111,6 +108,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintForConsole.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Run.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

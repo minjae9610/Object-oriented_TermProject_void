@@ -145,11 +145,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PrintClient.h" />
+    <ClInclude Include="PrintForConsole.h" />
+    <ClInclude Include="Run.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="FileProcessor.h" />
     <ClInclude Include="FileSystemForWindow.h" />
-    <ClInclude Include="Group.h" />
-    <ClInclude Include="GroupProcessor.h" />
     <ClInclude Include="LoginProcessor.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="MapBinaryFileSystemAdapter.h" />
@@ -166,12 +167,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileProcessor.cpp" />
-    <ClCompile Include="Group.cpp" />
-    <ClCompile Include="GroupProcessor.cpp" />
     <ClCompile Include="LoginProcessor.cpp" />
     <ClCompile Include="MapBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="Permission.cpp" />
     <ClCompile Include="PermissionProcessor.cpp" />
+    <ClCompile Include="PrintForConsole.cpp" />
+    <ClCompile Include="Run.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="VectorBinaryFileSystemAdapter.cpp" />
     <ClCompile Include="VectorFileSystemAdapter.cpp" />

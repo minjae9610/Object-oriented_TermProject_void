@@ -5,6 +5,8 @@
 class TestFileSys {
 public:
 	void test1() {
+		PrintForConsole PFC;
+		PFC.clearScrean();
 		cout << "파일 쓰기 테스트 1 (test.txt 파일을 test1 폴더 안에 쓰기)" << endl;
 		vector<const char *>* contents = new vector<const char*>();
 		contents->push_back("테스트1");
@@ -104,7 +106,7 @@ public:
 		cout << success << endl;
 		cout << endl;
 
-		cout << "유저 목록 추출 테스트" << endl;
+		cout << "사용자 목록 추출 테스트" << endl;
 		vector<const char*>* userList = new vector<const char*>();
 		LP.getUserList(userList);
 		for (int i = 0; i < userList->size(); i++)
@@ -113,24 +115,21 @@ public:
 		cout << endl;
 
 		cout << "로그인 테스트 1 (없는 아이디로)" << endl;
-		char* ID = "";
-		LP.signIn("testID3", "testPW3", &ID);
-		cout << ID << endl;
+		success = false;
+		LP.signIn("testID3", "testPW3", &success);
+		cout << success << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 2 (잘못된 비밀번호로)" << endl;
-		LP.signIn("testID1", "testPW2", &ID);
-		cout << ID << endl;
+		success = false;
+		LP.signIn("testID1", "testPW2", &success);
+		cout << success << endl;
 		cout << endl;
 
 		cout << "로그인 테스트 3 (존재하는 아이디의 알맞은 비밀번호로)" << endl;
-		LP.signIn("testID1", "testPW1", &ID);
-		cout << ID << endl;
-		cout << endl;
-
-		cout << "로그아웃 테스트" << endl;
-		LP.signOut(&ID);
-		cout << ID << endl;
+		success = false;
+		LP.signIn("testID1", "testPW1", &success);
+		cout << success << endl;
 		cout << endl;
 
 		cout << "회원 탈퇴 테스트 (testID2 틀린 비밀번호)" << endl;
@@ -158,24 +157,18 @@ public:
 		tempContents->push_back("장실좀 - 황동준");
 		tempContents->push_back("배고파 - 마니마니");
 		tempContents->push_back("배그합시다 여러분 - 김민재");
-		vector<const char*>* tempPermissions = new vector<const char*>();
-		tempPermissions->push_back("황동준");
-		tempPermissions->push_back("김민재");
-		tempPermissions->push_back("이병만");
-		tempPermissions->push_back("허효선");
+		Permission* tempPermissions = new Permission("김민재");
 		FP.fileWirte("testFPFile", tempContents, tempPermissions);
 		tempContents->clear();
-		tempPermissions->clear();
+		delete tempPermissions;
 		cout << endl;
 
 		cout << "파일 매니저 파일 읽기 테스트" << endl;
-		FP.fileRead("testFPFile", tempContents, tempPermissions);
-		for (int i = 0; i < tempPermissions->size(); i++)
-			cout << tempPermissions->at(i) << endl;
+		FP.fileRead("testFPFile", tempContents, &tempPermissions);
+		cout << tempPermissions->getPermission() << endl;
 		for (int i = 0; i < tempContents->size(); i++)
 			cout << tempContents->at(i) << endl;
 		tempContents->clear();
-		tempPermissions->clear();
 		delete tempContents;
 		delete tempPermissions;
 		cout << endl;
@@ -199,8 +192,5 @@ public:
 		isFileRemoved = 0;
 		FP.fileRemove("testFPFile", &isFileRemoved);
 		cout << isFileRemoved << endl;
-		cout << endl;
-
-		_getch();
 	}
 };

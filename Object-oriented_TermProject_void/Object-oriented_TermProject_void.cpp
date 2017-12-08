@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "TestFileSys.h"
+#include "Run.h"
 
 int main()
 {
-	TestFileSys TFS;
-	TFS.test1();
+	Run R;
+	R.mainMenu();
     return 0;
 }
 

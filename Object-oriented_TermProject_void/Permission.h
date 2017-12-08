@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Permission {
 private:
@@ -6,4 +7,5 @@ private:
 public:
 	Permission(const char*);
 	const char* getPermission();
+	bool operator== (Permission &);
 };

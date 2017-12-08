@@ -5,8 +5,7 @@
 class LoginProcessor {
 public:
 	void signUp(const char *, const char *, bool *);
-	void signIn(char *, const char *, char **);
-	void signOut(char **);
+	void signIn(char *, const char *, bool *);
 	void DeleteAccount(const char *, const char *, bool *);
 	void getUserList(vector<const char*>*);
 };
