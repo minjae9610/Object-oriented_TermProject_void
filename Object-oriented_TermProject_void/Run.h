@@ -15,5 +15,8 @@ private:
 	bool LoginMenu();
 	void signUp();
 	void signIn();
+	void write();
+	void read();
+	void remove();
 	void testCase();
 };

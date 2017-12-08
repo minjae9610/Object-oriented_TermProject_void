@@ -3,15 +3,18 @@
 
 void FileProcessor::fileRead(const char* fileName, vector<const char*>* contents, Permission** permissions)
 {
-	string temp = "SystemData\\VOID\\";
-	temp += fileName;
-	temp += ".VOID";
+	string tempPath = "SystemData\\VOID\\";
+	tempPath += fileName;
+	if(strcmp(&tempPath.at(tempPath.length() - 5), ".VOID"))
+		tempPath += ".VOID";
 	vector<const char*>* allContents = new vector<const char*>();
 	VectorFileSystemAdapter VFSA;
-	VFSA.fileIn(temp.c_str(), allContents);
-	*permissions = new Permission(allContents->at(0));
-	for (int i = 1; i < allContents->size(); i++)
-		contents->push_back(allContents->at(i));
+	VFSA.fileIn(tempPath.c_str(), allContents);
+	if (allContents->size() != 0) {
+		*permissions = new Permission(allContents->at(0));
+		for (int i = 1; i < allContents->size(); i++)
+			contents->push_back(allContents->at(i));
+	}
 }
 
 void FileProcessor::fileWirte(char* fileName, vector<const char*>* contents, Permission* permissions)

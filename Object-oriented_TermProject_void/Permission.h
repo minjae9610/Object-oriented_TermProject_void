@@ -5,7 +5,9 @@ class Permission {
 private:
 	const char* permission;
 public:
+	Permission() {}
 	Permission(const char*);
 	const char* getPermission();
-	bool operator== (Permission &);
+	bool operator ==(const Permission &) const;
+	bool operator !=(const Permission &) const;
 };

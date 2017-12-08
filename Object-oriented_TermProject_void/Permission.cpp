@@ -11,10 +11,12 @@ const char * Permission::getPermission()
 	return permission;
 }
 
-bool Permission::operator==(Permission& target)
+bool Permission::operator==(const Permission& target) const
 {
-	if (!strcmp(permission, target.getPermission()))
-		return true;
-	else
-		return false;
+	return !strcmp(permission, target.permission);
+}
+
+bool Permission::operator!=(const Permission& target) const
+{
+	return strcmp(permission, target.permission);
 }
