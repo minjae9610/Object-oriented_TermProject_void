@@ -351,7 +351,8 @@ void Run::write()
 				delete filePermission;
 				delete NULLPermission;
 				throw "다른 사용자가 해당 이름의 문서를 이미 만들었습니다.";
-			}else if (filePermission != NULLPermission && *filePermission == Permission(user->getUserName())) {
+			}
+			else if (filePermission != NULLPermission && *filePermission == Permission(user->getUserName())) {
 				delete filePermission;
 				int select;
 				while (true) {
@@ -622,6 +623,47 @@ void Run::givePermission()
 
 void Run::removePermission()
 {
+	try {
+		vector<const char*>* userList = new vector<const char*>();
+		PermissionProcessor PP;
+		PP.permissionOwnerList(&Permission(user->getUserName()), userList);
+		PFC.clearScrean();
+		PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 삭제하기 ----------");
+		PFC.printCharArrayWithEndLine("");
+		for (int i = 0; i < userList->size(); i++) {
+			PFC.printCharArray(" ");
+			PFC.printCharArrayWithEndLine(userList->at(i));
+		}
+		PFC.printCharArrayWithEndLine("");
+		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArray(" 공동 관리자에서 삭제할 사용자 : ");
+		string ID;
+		getline(cin, ID);
+		for (int i = 0; i < userList->size(); i++)
+			if (ID == userList->at(i)) {
+				StringFixAdapter SFA;
+				char* temp;
+				SFA.constToNot(userList->at(i), &temp);
+				PFC.printCharArrayWithEndLine("------------------------");
+				bool success = false;
+				User(temp).deletePermission(&Permission(user->getUserName()), &success);
+				if (success) {
+					PFC.printCharArray(" ");
+					PFC.printCharArray(userList->at(i));
+					PFC.printCharArrayWithEndLine(" 님을 공동 관리자에서 삭제하였습니다.");
+					PFC.pause();
+				}
+				else
+					throw "삭제에 실패하였습니다.";
+				delete userList;
+				return;
+			}
+		throw "존재하지 않는 사용자입니다.";
+		delete userList;
+	}
+	catch (const char* st) {
+		PFC.printError(st);
+	}
 }
 
 void Run::permissionOwnerList()

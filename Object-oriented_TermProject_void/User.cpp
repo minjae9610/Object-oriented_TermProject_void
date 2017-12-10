@@ -41,7 +41,7 @@ void User::deletePermission(Permission* permission, bool* success)
 void User::searchPermission(Permission* permission, int* num)
 {
 	for (int i = 0; i < permissions->size(); i++) {
-		if (permissions->at(i) == permission) {
+		if (*permissions->at(i) == *permission) {
 			*num = i;
 			return;
 		}
