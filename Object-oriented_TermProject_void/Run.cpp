@@ -114,7 +114,7 @@ void Run::userInfoMenu()
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArrayWithEndLine(" 1 : 로그아웃");
 			PFC.printCharArrayWithEndLine(" 2 : 회원탈퇴");
-			PFC.printCharArrayWithEndLine(" 3 : 내 문서 공동 관리자 관리하기");
+			PFC.printCharArrayWithEndLine(" 3 : 공동 관리자 관리하기");
 			PFC.printCharArrayWithEndLine(" 0 : 메인 메뉴로 돌아가기");
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArray(" 메뉴 선택 : ");
@@ -158,9 +158,9 @@ void Run::permissionManageMenu()
 			PFC.printCharArray(" 현재 로그인 한 사용자 : ");
 			PFC.printCharArrayWithEndLine(user->getUserName());
 			PFC.printCharArrayWithEndLine("------------------------");
-			PFC.printCharArrayWithEndLine(" 1 : 내 문서 공동 관리자 추가하기");
-			PFC.printCharArrayWithEndLine(" 2 : 내 문서 공동 관리자 삭제하기");
-			PFC.printCharArrayWithEndLine(" 3 : 내 문서 공동 관리자 리스트 확인하기");
+			PFC.printCharArrayWithEndLine(" 1 : 공동 관리자 추가하기");
+			PFC.printCharArrayWithEndLine(" 2 : 공동 관리자 삭제하기");
+			PFC.printCharArrayWithEndLine(" 3 : 공동 관리자 리스트 확인하기");
 			PFC.printCharArrayWithEndLine(" 0 : 내 정보 설정 메뉴로 돌아가기");
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArray(" 메뉴 선택 : ");
@@ -174,8 +174,10 @@ void Run::permissionManageMenu()
 			switch (menuSelect)
 			{
 			case 1:
+				givePermission();
 				break;
 			case 2:
+				removePermission();
 				break;
 			case 3:
 				permissionOwnerList();
@@ -561,6 +563,67 @@ void Run::remove()
 	}
 }
 
+void Run::givePermission()
+{
+	try {
+		vector<const char*>* userList = new vector<const char*>();
+		PermissionProcessor PP;
+		PP.subjectList(userList);
+		PFC.clearScrean();
+		PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 추가하기 ----------");
+		PFC.printCharArrayWithEndLine("");
+		for (int i = 0; i < userList->size(); i++)
+			if (strcmp(userList->at(i), user->getUserName())) {
+				PFC.printCharArray(" ");
+				PFC.printCharArrayWithEndLine(userList->at(i));
+			}
+		PFC.printCharArrayWithEndLine("");
+		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArray(" 공동 관리자로 추가할 사용자 : ");
+		string ID;
+		getline(cin, ID);
+		for (int i = 0; i < userList->size(); i++)
+			if (ID == userList->at(i))
+				if (strcmp(userList->at(i), user->getUserName())) {
+					StringFixAdapter SFA;
+					char* temp;
+					SFA.constToNot(userList->at(i), &temp);
+					vector<Permission*>* permissions = new vector<Permission*>();
+					PP.fileExtraction(temp, permissions);
+					bool alreadyOwn = false;
+					for (int j = 0; j < permissions->size(); j++) {
+						if (*permissions->at(j) == Permission(user->getUserName()))
+							alreadyOwn = true;
+						delete permissions->at(j);
+					}
+					delete permissions;
+					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArray(" ");
+					PFC.printCharArray(userList->at(i));
+					if (alreadyOwn)
+						PFC.printCharArrayWithEndLine(" 님은 이미 공동 관리자에 추가되어 있습니다.");
+					else {
+						PFC.printCharArrayWithEndLine(" 님을 공동 관리자에 추가하였습니다.");
+						User(temp).addPermission(new Permission(user->getUserName()));
+					}
+					PFC.pause();
+					delete userList;
+					return;
+				}
+				else
+					throw "스스로를 추가할 수 없습니다.";
+		throw "존재하지 않는 사용자입니다.";
+		delete userList;
+	}
+	catch (const char* st) {
+		PFC.printError(st);
+	}
+}
+
+void Run::removePermission()
+{
+}
+
 void Run::permissionOwnerList()
 {
 	vector<const char*>* userList = new vector<const char*>();
@@ -569,8 +632,10 @@ void Run::permissionOwnerList()
 	PFC.clearScrean();
 	PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 리스트 ----------");
 	PFC.printCharArrayWithEndLine("");
-	for(int i = 0; i < userList->size(); i++)
+	for (int i = 0; i < userList->size(); i++) {
+		PFC.printCharArray(" ");
 		PFC.printCharArrayWithEndLine(userList->at(i));
+	}
 	PFC.printCharArrayWithEndLine("");
 	PFC.printCharArrayWithEndLine("------------------------");
 	PFC.pause();

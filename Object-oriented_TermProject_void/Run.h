@@ -22,5 +22,7 @@ private:
 	void write();
 	void read();
 	void remove();
+	void givePermission();
+	void removePermission();
 	void permissionOwnerList();
 };

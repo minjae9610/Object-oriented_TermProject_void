@@ -16,9 +16,7 @@ void PermissionProcessor::fileExtraction(char* name, vector<Permission*>* permis
 			for (int j = 0; j < temp; j++)
 				permissions->push_back(new Permission(permissionFile->at(i + 2 + j)));
 		}
-		else {
-			i += temp + 1;
-		}
+		i += temp + 1;
 	}
 }
 
@@ -123,7 +121,7 @@ void PermissionProcessor::permissionOwnerList(Permission* permission, vector<con
 		vector<Permission*>* permissionList = new vector<Permission*>();
 		fileExtraction(temp, permissionList);
 		for (int j = 0; j < permissionList->size(); j++) {
-			if (permission == permissionList->at(j))
+			if (*permissionList->at(j) == *permission)
 				userList->push_back(subjects->at(i));
 			delete permissionList->at(j);
 		}
