@@ -3,9 +3,10 @@
 
 void FileProcessor::fileRead(const char* fileName, vector<const char*>* contents, Permission** permissions)
 {
+	contents->clear();
 	string tempPath = "SystemData\\VOID\\";
 	tempPath += fileName;
-	if(strcmp(&tempPath.at(tempPath.length() - 5), ".VOID"))
+	if (strcmp(&tempPath.at(tempPath.length() - 5), ".VOID"))
 		tempPath += ".VOID";
 	vector<const char*>* allContents = new vector<const char*>();
 	VectorFileSystemAdapter VFSA;
@@ -23,12 +24,13 @@ void FileProcessor::fileWirte(char* fileName, vector<const char*>* contents, Per
 	finalContents->reserve(contents->size() + 1);
 	finalContents->push_back(permissions->getPermission());
 	finalContents->insert(finalContents->end(), contents->begin(), contents->end());
-	string temp = "SystemData\\VOID\\";
-	temp += fileName;
-	temp += ".VOID";
+	string tempPath = "SystemData\\VOID\\";
+	tempPath += fileName;
+	if (strcmp(&tempPath.at(tempPath.length() - 5), ".VOID"))
+		tempPath += ".VOID";
 	char* ptr;
 	StringFixAdapter SFA;
-	SFA.constToNot(temp.c_str(), &ptr);
+	SFA.constToNot(tempPath.c_str(), &ptr);
 	VectorFileSystemAdapter VFSA;
 	VFSA.fileOut(ptr, finalContents);
 	delete finalContents;
@@ -45,6 +47,7 @@ void FileProcessor::fileRemove(const char* fileName, int* isFileRemoved)
 
 void FileProcessor::fileList(vector<const char*>* fileList)
 {
+	fileList->clear();
 	VectorFileSystemAdapter VFSA;
 	VFSA.fileListFind("SystemData\\VOID\\*.VOID", fileList);
 }

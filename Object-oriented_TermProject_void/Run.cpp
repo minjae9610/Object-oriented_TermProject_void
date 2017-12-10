@@ -189,7 +189,7 @@ void Run::write()
 		try {
 			PFC.clearScrean();
 			PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
-			PFC.printCharArray(" 작성할 문서 이름 입력 (확장자 제외) (-1 입력시 메뉴로 복귀) : ");
+			PFC.printCharArray(" 작성할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 			string path;
 			getline(cin, path);
 			if (path.length() >= 120)
@@ -201,14 +201,50 @@ void Run::write()
 			FileProcessor FP;
 			vector<const char*>* contents = new vector<const char*>();
 			FP.fileRead(path.c_str(), contents, &filePermission);
+			contents->clear();
 			if (filePermission != NULLPermission && *filePermission != Permission(user->getUserName())) {
 				delete contents;
 				delete filePermission;
 				delete NULLPermission;
-				throw "다른 사용자가 해당 이름의 파일을 이미 만들었습니다.";
+				throw "다른 사용자가 해당 이름의 문서를 이미 만들었습니다.";
+			}else if (filePermission != NULLPermission && *filePermission == Permission(user->getUserName())) {
+				delete filePermission;
+				int select;
+				while (true) {
+					try {
+						PFC.clearScrean();
+						PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+						PFC.printCharArrayWithEndLine(" 해당 이름의 문서가 이미 존재합니다. 덮어쓰시겠습니까?");
+						PFC.printCharArrayWithEndLine("------------------------");
+						PFC.printCharArrayWithEndLine(" 1 : YES");
+						PFC.printCharArrayWithEndLine(" 2 : NO");
+						PFC.printCharArrayWithEndLine("------------------------");
+						PFC.printCharArray(" 입력 : ");
+						cin >> select;
+						if (!cin || cin.get() != '\n') {
+							cin.clear();
+							cin.ignore(UINT_MAX, '\n');
+							throw "입력이 잘못되었습니다.";
+						}
+						else if (select != 1 && select != 2) {
+							throw "입력이 잘못되었습니다.";
+						}
+						break;
+					}
+					catch (const char* st) {
+						PFC.printError(st);
+					}
+				}
+				if (select == 2) {
+					delete NULLPermission;
+					continue;
+				}
+				PFC.clearScrean();
+				PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+				PFC.printCharArray(" 작성할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
+				PFC.printCharArrayWithEndLine(path.c_str());
 			}
 			delete NULLPermission;
-			contents->clear();
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArrayWithEndLine(" 문서 내용 입력 (EOF 입력시 문서 입력 종료)");
 			PFC.printCharArrayWithEndLine("");
@@ -257,7 +293,7 @@ void Run::read()
 			}
 			delete fileList;
 			PFC.printCharArrayWithEndLine("------------------------");
-			PFC.printCharArray(" 확인할 문서 이름 입력 (확장자 제외) (-1 입력시 메뉴로 복귀) : ");
+			PFC.printCharArray(" 확인할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 			string path;
 			getline(cin, path);
 			if (path.length() >= 120)
@@ -270,11 +306,11 @@ void Run::read()
 			if (filePermission == NULLPermission) {
 				delete contents;
 				delete NULLPermission;
-				throw "해당 파일이 없습니다.";
+				throw "해당 문서가 없습니다.";
 			}
 			delete NULLPermission;
 			if (*filePermission != Permission(user->getUserName())) {
-				throw "해당 파일에 대한 접근 권한이 없습니다.";
+				throw "해당 문서에 대한 접근 권한이 없습니다.";
 				delete filePermission;
 			}
 			delete filePermission;
@@ -301,6 +337,87 @@ void Run::read()
 
 void Run::remove()
 {
+	while (true) {
+		try {
+			PFC.clearScrean();
+			PFC.printCharArrayWithEndLine("\n--------- 문서 삭제 ----------");
+			PFC.printCharArrayWithEndLine(" 문서 리스트");
+			PFC.printCharArrayWithEndLine("");
+			FileProcessor FP;
+			vector<const char*>* fileList = new vector<const char*>();
+			FP.fileList(fileList);
+			vector<const char*>* contents = new vector<const char*>();
+			for (int i = 0; i < fileList->size(); i++) {
+				PFC.printCharArray(" ");
+				PFC.printCharArray(fileList->at(i));
+				PFC.printCharArray(" - 작성자 : ");
+				Permission* fileWriter;
+				FP.fileRead(fileList->at(i), contents, &fileWriter);
+				PFC.printCharArrayWithEndLine(fileWriter->getPermission());
+				contents->clear();
+				delete fileWriter;
+			}
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArray(" 삭제할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
+			string path;
+			getline(cin, path);
+			if (path.length() >= 120)
+				throw "문서 이름은 120자 이하여야 합니다.";
+			if (path == "-1")
+				break;
+			Permission* NULLPermission = new Permission();
+			Permission* filePermission = NULLPermission;
+			FP.fileRead(path.c_str(), contents, &filePermission);
+			if (filePermission == NULLPermission) {
+				delete contents;
+				delete NULLPermission;
+				throw "해당 문서가 없습니다.";
+			}
+			else if (filePermission != NULLPermission && *filePermission != Permission(user->getUserName())) {
+				delete contents;
+				delete filePermission;
+				delete NULLPermission;
+				throw "다른 사용자의 문서는 삭제할 수 없습니다.";
+			}
+			delete filePermission;
+			delete NULLPermission;
+			int success = 0;
+			FP.fileRemove(path.c_str(), &success);
+			if (!success) {
+				PFC.clearScrean();
+				PFC.printCharArrayWithEndLine("\n--------- 문서 삭제 ----------");
+				PFC.printCharArrayWithEndLine(" 문서 리스트");
+				PFC.printCharArrayWithEndLine("");
+				fileList->clear();
+				FP.fileList(fileList);
+				for (int i = 0; i < fileList->size(); i++) {
+					PFC.printCharArray(" ");
+					PFC.printCharArray(fileList->at(i));
+					PFC.printCharArray(" - 작성자 : ");
+					Permission* fileWriter;
+					FP.fileRead(fileList->at(i), contents, &fileWriter);
+					PFC.printCharArrayWithEndLine(fileWriter->getPermission());
+					contents->clear();
+					delete fileWriter;
+				}
+				delete contents;
+				delete fileList;
+				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine(" 해당 문서 삭제에 성공했습니다.");
+				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.pause();
+				break;
+			}
+			else {
+				delete contents;
+				throw "해당 문서 삭제에 실패하였습니다.";
+			}
+		}
+		catch (const char* st) {
+			PFC.printError(st);
+			break;
+		}
+	}
 }
 
 void Run::testCase()

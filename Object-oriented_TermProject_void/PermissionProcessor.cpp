@@ -2,6 +2,9 @@
 #include "PermissionProcessor.h"
 
 void PermissionProcessor::fileExtraction(char* path, char* name, vector<Permission*>* permissions) {
+	for (int i = 0; i < permissions->size(); i++)
+		delete permissions->at(i);
+	permissions->clear();
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
 	VBFSA.fileIn(path, permissionFile);
@@ -72,6 +75,7 @@ void PermissionProcessor::fileRenewal(char* path, char* name, vector<Permission*
 
 void PermissionProcessor::subjectList(char* path, vector<const char*>* subjects)
 {
+	subjects->clear();
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
 	VBFSA.fileIn(path, permissionFile);

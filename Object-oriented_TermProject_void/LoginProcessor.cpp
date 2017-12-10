@@ -58,6 +58,7 @@ void LoginProcessor::DeleteAccount(const char* ID, const char* PW, bool* success
 
 void LoginProcessor::getUserList(vector<const char*>* userList)
 {
+	userList->clear();
 	map<const char*, const char*>* userLoginInfo = new map<const char*, const char*>();
 	MapBinaryFileSystemAdapter MBFSA;
 	MBFSA.fileIn("SystemData\\UserLoginInfo.VOID_DB", userLoginInfo);
