@@ -1,13 +1,6 @@
 #include "stdafx.h"
 #include "Run.h"
 
-Run::~Run()
-{
-	if (user != NULLuser)
-		delete user;
-	delete NULLuser;
-}
-
 void Run::mainMenu()
 {
 	while (true) {
@@ -30,7 +23,6 @@ bool Run::unLoginMenu()
 		PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
 		PFC.printCharArrayWithEndLine(" 1 : 로그인");
 		PFC.printCharArrayWithEndLine(" 2 : 회원가입");
-		PFC.printCharArrayWithEndLine(" 3 : 테스트 케이스 실행");
 		PFC.printCharArrayWithEndLine(" 0 : 종료");
 		PFC.printCharArrayWithEndLine("------------------------");
 		PFC.printCharArray(" 메뉴 선택 : ");
@@ -48,11 +40,6 @@ bool Run::unLoginMenu()
 			break;
 		case 2:
 			signUp();
-			break;
-		case 3:
-			TestFileSys TFS;
-			TFS.test1();
-			PFC.pause();
 			break;
 		case 0:
 			return true;
@@ -144,6 +131,8 @@ void Run::userInfoMenu()
 				signOut();
 				return;
 			case 2:
+				if (DeleteAccount())
+					return;
 				break;
 			case 3:
 				break;
@@ -241,6 +230,55 @@ void Run::signOut()
 {
 	delete user;
 	user = NULLuser;
+}
+
+bool Run::DeleteAccount()
+{
+	int select;
+	while (true) {
+		try {
+			PFC.clearScrean();
+			PFC.printCharArrayWithEndLine("\n--------- 회원탍퇴 ----------");
+			PFC.printCharArrayWithEndLine(" 주의 : 회원 탈퇴를 해도 작성한 문서는 남아 있게 됩니다.");
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine(" 1 : YES");
+			PFC.printCharArrayWithEndLine(" 2 : NO");
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArray(" 입력 : ");
+			cin >> select;
+			if (!cin || cin.get() != '\n') {
+				cin.clear();
+				cin.ignore(UINT_MAX, '\n');
+				throw "입력이 잘못되었습니다.";
+			}
+			else if (select != 1 && select != 2) {
+				throw "입력이 잘못되었습니다.";
+			}
+			if (select == 1) {
+				PFC.clearScrean();
+				PFC.printCharArrayWithEndLine("\n--------- 회원탍퇴 ----------");
+				PFC.printCharArray(" 비밀번호 입력 : ");
+				string PW;
+				getline(cin, PW);
+				PFC.printCharArrayWithEndLine("------------------------");
+				LoginProcessor LP;
+				bool success = false;
+				LP.DeleteAccount(user->getUserName(), PW.c_str(), &success);
+				if (success) {
+					PFC.printCharArrayWithEndLine(" 회원 탈퇴에 성공했습니다.");
+					PFC.pause();
+					signOut();
+				}
+				else
+					throw "비밀번호가 다릅니다.";
+				return true;
+			}
+			return false;
+		}
+		catch (const char* st) {
+			PFC.printError(st);
+		}
+	}
 }
 
 void Run::write()
@@ -477,10 +515,4 @@ void Run::remove()
 			break;
 		}
 	}
-}
-
-void Run::testCase()
-{
-	TestFileSys TFS;
-	TFS.test1();
 }

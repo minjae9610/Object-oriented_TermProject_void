@@ -163,7 +163,6 @@
     <ClInclude Include="StringFixAdapter.h" />
     <ClInclude Include="StringFixClient.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TestFileSys.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileProcessor.cpp" />

@@ -3,7 +3,7 @@
 
 int main()
 {
-	Run R;
+	Run R = Run();
 	R.mainMenu();
     return 0;
 }

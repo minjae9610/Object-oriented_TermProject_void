@@ -10,7 +10,6 @@ private:
 	User* NULLuser = new User();;
 	User* user = NULLuser;
 public:
-	~Run();
 	void mainMenu();
 private:
 	bool unLoginMenu();
@@ -19,8 +18,8 @@ private:
 	void signUp();
 	void signIn();
 	void signOut();
+	bool DeleteAccount();
 	void write();
 	void read();
 	void remove();
-	void testCase();
 };

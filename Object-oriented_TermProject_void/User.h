@@ -8,6 +8,7 @@ private:
 	char* userName;
 	vector<Permission*>* permissions;
 public:
+	~User();
 	User() {}
 	User(char*);
 	void addPermission(Permission *);

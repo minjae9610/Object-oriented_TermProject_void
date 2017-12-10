@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "PermissionProcessor.h"
 
-void PermissionProcessor::fileExtraction(char* path, char* name, vector<Permission*>* permissions) {
+void PermissionProcessor::fileExtraction(char* name, vector<Permission*>* permissions) {
 	for (int i = 0; i < permissions->size(); i++)
 		delete permissions->at(i);
 	permissions->clear();
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
-	VBFSA.fileIn(path, permissionFile);
+	VBFSA.fileIn("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	for (int i = 0; i + 1 < permissionFile->size(); i++) {
 		StringFixAdapter SFA;
 		int temp = 0;
@@ -22,11 +22,11 @@ void PermissionProcessor::fileExtraction(char* path, char* name, vector<Permissi
 	}
 }
 
-void PermissionProcessor::fileRenewal(char* path, char* name, vector<Permission*>* permissions)
+void PermissionProcessor::fileRenewal(char* name, vector<Permission*>* permissions)
 {
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
-	VBFSA.fileIn(path, permissionFile);
+	VBFSA.fileIn("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	bool find = false;
 	int index = 0;
 	for (int i = 0; i < permissionFile->size(); i++) {
@@ -69,16 +69,16 @@ void PermissionProcessor::fileRenewal(char* path, char* name, vector<Permission*
 			permissionFile->push_back(permissionList->at(i));
 	}
 	delete permissionList;
-	VBFSA.fileOut(path, permissionFile);
+	VBFSA.fileOut("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	delete permissionFile;
 }
 
-void PermissionProcessor::subjectList(char* path, vector<const char*>* subjects)
+void PermissionProcessor::subjectList(vector<const char*>* subjects)
 {
 	subjects->clear();
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
-	VBFSA.fileIn(path, permissionFile);
+	VBFSA.fileIn("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	for (int i = 0; i < permissionFile->size(); i++) {
 		subjects->push_back(permissionFile->at(i));
 		StringFixAdapter SFA;
@@ -89,12 +89,12 @@ void PermissionProcessor::subjectList(char* path, vector<const char*>* subjects)
 	delete permissionFile;
 }
 
-void PermissionProcessor::subjectDelete(char* path, char* name, bool* success)
+void PermissionProcessor::subjectDelete(char* name, bool* success)
 {
 	*success = false;
 	vector<const char*>* permissionFile = new vector<const char*>();
 	VectorBinaryFileSystemAdapter VBFSA;
-	VBFSA.fileIn(path, permissionFile);
+	VBFSA.fileIn("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	for (int i = 0; i < permissionFile->size(); i++) {
 		StringFixAdapter SFA;
 		int temp = 0;
@@ -107,6 +107,6 @@ void PermissionProcessor::subjectDelete(char* path, char* name, bool* success)
 		else
 			i += temp + 1;
 	}
-	VBFSA.fileOut(path, permissionFile);
+	VBFSA.fileOut("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	delete permissionFile;
 }

@@ -1,6 +1,13 @@
 #include "stdafx.h"
 #include "User.h"
 
+User::~User()
+{
+	for (int i = 0; i < permissions->size(); i++)
+		delete permissions->at(i);
+	delete permissions;
+}
+
 User::User(char* name)
 {
 	userName = name;

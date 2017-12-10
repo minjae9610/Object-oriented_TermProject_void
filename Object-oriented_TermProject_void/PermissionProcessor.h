@@ -4,8 +4,8 @@
 
 class PermissionProcessor {
 public:
-	void fileExtraction(char *, char *, vector<Permission*>*);
-	void fileRenewal(char *, char *, vector<Permission*>*);
-	void subjectList(char *, vector<const char*>*);
-	void subjectDelete(char *, char *, bool *);
+	void fileExtraction(char *, vector<Permission*>*);
+	void fileRenewal(char *, vector<Permission*>*);
+	void subjectList(vector<const char*>*);
+	void subjectDelete(char *, bool *);
 };
