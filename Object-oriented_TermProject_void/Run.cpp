@@ -20,13 +20,13 @@ bool Run::unLoginMenu()
 {
 	try {
 		PFC.clearScrean();
-		PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+		PFC.printCharArrayWithEndLine("\n---------------------------------------- NULL 관리 프로그램 ----------------------------------------");
 		PFC.printCharArrayWithEndLine("");
 		PFC.printCharArrayWithEndLine(" 1 : 로그인");
 		PFC.printCharArrayWithEndLine(" 2 : 회원가입");
 		PFC.printCharArrayWithEndLine(" 0 : 종료");
 		PFC.printCharArrayWithEndLine("");
-		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 		PFC.printCharArray(" 메뉴 선택 : ");
 		int menuSelect;
 		cin >> menuSelect;
@@ -59,12 +59,12 @@ bool Run::LoginMenu()
 {
 	try {
 		PFC.clearScrean();
-		PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+		PFC.printCharArrayWithEndLine("\n---------------------------------------- NULL 관리 프로그램 ----------------------------------------");
 		PFC.printCharArrayWithEndLine("");
 		PFC.printCharArray(" 현재 로그인 한 사용자 : ");
 		PFC.printCharArrayWithEndLine(user->getUserName());
 		PFC.printCharArrayWithEndLine("");
-		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 		PFC.printCharArrayWithEndLine("");
 		PFC.printCharArrayWithEndLine(" 1 : 문서 보기");
 		PFC.printCharArrayWithEndLine(" 2 : 문서 작성");
@@ -72,7 +72,7 @@ bool Run::LoginMenu()
 		PFC.printCharArrayWithEndLine(" 4 : 내 정보 설정");
 		PFC.printCharArrayWithEndLine(" 0 : 종료");
 		PFC.printCharArrayWithEndLine("");
-		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 		PFC.printCharArray(" 메뉴 선택 : ");
 		int menuSelect;
 		cin >> menuSelect;
@@ -114,19 +114,19 @@ void Run::userInfoMenu()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+			PFC.printCharArrayWithEndLine("\n---------------------------------------- NULL 관리 프로그램 ----------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" 현재 로그인 한 사용자 : ");
 			PFC.printCharArrayWithEndLine(user->getUserName());
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 1 : 로그아웃");
 			PFC.printCharArrayWithEndLine(" 2 : 회원탈퇴");
 			PFC.printCharArrayWithEndLine(" 3 : 공동 관리자 관리하기");
 			PFC.printCharArrayWithEndLine(" 0 : 메인 메뉴로 돌아가기");
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArray(" 메뉴 선택 : ");
 			int menuSelect;
 			cin >> menuSelect;
@@ -164,12 +164,12 @@ void Run::permissionManageMenu()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+			PFC.printCharArrayWithEndLine("\n---------------------------------------- NULL 관리 프로그램 ----------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" 현재 로그인 한 사용자 : ");
 			PFC.printCharArrayWithEndLine(user->getUserName());
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 1 : 공동 관리자 추가하기");
 			PFC.printCharArrayWithEndLine(" 2 : 공동 관리자 삭제하기");
@@ -177,7 +177,7 @@ void Run::permissionManageMenu()
 			PFC.printCharArrayWithEndLine(" 4 : 내 관리 권한 확인하기");
 			PFC.printCharArrayWithEndLine(" 0 : 내 정보 설정 메뉴로 돌아가기");
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArray(" 메뉴 선택 : ");
 			int menuSelect;
 			cin >> menuSelect;
@@ -220,7 +220,7 @@ void Run::signUp()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 회원가입 ----------");
+			PFC.printCharArrayWithEndLine("\n--------------------------------------------- 회원가입 ---------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" ID 입력 : ");
 			string ID;
@@ -240,11 +240,11 @@ void Run::signUp()
 				user = new User(id);
 				PFC.clearScrean();
 				PFC.printCharArrayWithEndLine("");
-				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArrayWithEndLine(" 회원가입에 성공했습니다.");
 				PFC.printCharArrayWithEndLine("");
-				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 				PFC.pause();
 				break;
 			}
@@ -267,7 +267,7 @@ void Run::signIn()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 로그인 ----------");
+			PFC.printCharArrayWithEndLine("\n---------------------------------------------- 로그인 ----------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" ID 입력 : ");
 			string ID;
@@ -277,7 +277,7 @@ void Run::signIn()
 			getline(cin, PW);
 			PFC.clearScrean();
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			bool isAccountFind = false;
 			char* id;
 			StringFixAdapter SFA;
@@ -288,7 +288,7 @@ void Run::signIn()
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArrayWithEndLine(" 로그인에 성공했습니다.");
 				PFC.printCharArrayWithEndLine("");
-				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 				PFC.pause();
 				break;
 			}
@@ -314,16 +314,16 @@ bool Run::DeleteAccount()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 회원탍퇴 ----------");
+			PFC.printCharArrayWithEndLine("\n--------------------------------------------- 회원탈퇴 ---------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 주의 : 회원 탈퇴를 해도 작성한 문서는 남아 있게 됩니다.");
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 1 : YES");
 			PFC.printCharArrayWithEndLine(" 2 : NO");
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArray(" 입력 : ");
 			cin >> select;
 			if (!cin || cin.get() != '\n') {
@@ -336,7 +336,7 @@ bool Run::DeleteAccount()
 			}
 			if (select == 1) {
 				PFC.clearScrean();
-				PFC.printCharArrayWithEndLine("\n--------- 회원탈퇴 ----------");
+				PFC.printCharArrayWithEndLine("\n--------------------------------------------- 회원탈퇴 ---------------------------------------------");
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArray(" 비밀번호 입력 : ");
 				string PW;
@@ -347,11 +347,11 @@ bool Run::DeleteAccount()
 				if (success) {
 					PFC.clearScrean();
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.printCharArrayWithEndLine("");
 					PFC.printCharArrayWithEndLine(" 회원 탈퇴에 성공했습니다.");
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.pause();
 					signOut();
 				}
@@ -372,7 +372,7 @@ void Run::write()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+			PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 작성 ---------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" 작성할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 			string path;
@@ -399,16 +399,16 @@ void Run::write()
 				while (true) {
 					try {
 						PFC.clearScrean();
-						PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+						PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 작성 ---------------------------------------------");
 						PFC.printCharArrayWithEndLine("");
 						PFC.printCharArrayWithEndLine(" 해당 이름의 문서가 이미 존재합니다. 덮어쓰시겠습니까?");
 						PFC.printCharArrayWithEndLine("");
-						PFC.printCharArrayWithEndLine("------------------------");
+						PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 						PFC.printCharArrayWithEndLine("");
 						PFC.printCharArrayWithEndLine(" 1 : YES");
 						PFC.printCharArrayWithEndLine(" 2 : NO");
 						PFC.printCharArrayWithEndLine("");
-						PFC.printCharArrayWithEndLine("------------------------");
+						PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 						PFC.printCharArray(" 입력 : ");
 						cin >> select;
 						if (!cin || cin.get() != '\n') {
@@ -430,14 +430,14 @@ void Run::write()
 					continue;
 				}
 				PFC.clearScrean();
-				PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+				PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 작성 ---------------------------------------------");
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArray(" 작성할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 				PFC.printCharArrayWithEndLine(path.c_str());
 			}
 			delete NULLPermission;
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 문서 내용 입력 (EOF 입력시 문서 입력 종료)");
 			PFC.printCharArrayWithEndLine("");
@@ -468,7 +468,7 @@ void Run::read()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 문서 작성 ----------");
+			PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 검색 ---------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 문서 리스트");
 			PFC.printCharArrayWithEndLine("");
@@ -488,7 +488,7 @@ void Run::read()
 			}
 			delete fileList;
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArray(" 확인할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 			string path;
 			getline(cin, path);
@@ -514,9 +514,9 @@ void Run::read()
 			if(!hasPermission)
 				throw "해당 문서에 대한 접근 권한이 없습니다.";
 			PFC.clearScrean();
-			PFC.printCharArray("\n--------- ");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
+			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(path.c_str());
-			PFC.printCharArrayWithEndLine(" ----------");
 			PFC.printCharArrayWithEndLine("");
 			for (int i = 0; i < contents->size(); i++) {
 				PFC.printCharArray(" ");
@@ -524,7 +524,7 @@ void Run::read()
 			}
 			delete contents;
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.pause();
 			break;
 		}
@@ -539,7 +539,7 @@ void Run::remove()
 	while (true) {
 		try {
 			PFC.clearScrean();
-			PFC.printCharArrayWithEndLine("\n--------- 문서 삭제 ----------");
+			PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 삭제 ---------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine(" 문서 리스트");
 			PFC.printCharArrayWithEndLine("");
@@ -558,7 +558,7 @@ void Run::remove()
 				delete fileWriter;
 			}
 			PFC.printCharArrayWithEndLine("");
-			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArray(" 삭제할 문서 이름 입력 (-1 입력시 메뉴로 복귀) : ");
 			string path;
@@ -587,7 +587,7 @@ void Run::remove()
 			FP.fileRemove(path.c_str(), &success);
 			if (!success) {
 				PFC.clearScrean();
-				PFC.printCharArrayWithEndLine("\n--------- 문서 삭제 ----------");
+				PFC.printCharArrayWithEndLine("\n-------------------------------------------- 문서 삭제 ---------------------------------------------");
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArrayWithEndLine(" 문서 리스트");
 				PFC.printCharArrayWithEndLine("");
@@ -605,11 +605,11 @@ void Run::remove()
 				delete contents;
 				delete fileList;
 				PFC.printCharArrayWithEndLine("");
-				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 				PFC.printCharArrayWithEndLine("");
 				PFC.printCharArrayWithEndLine(" 해당 문서 삭제에 성공했습니다.");
 				PFC.printCharArrayWithEndLine("");
-				PFC.printCharArrayWithEndLine("------------------------");
+				PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 				PFC.pause();
 				break;
 			}
@@ -632,7 +632,7 @@ void Run::givePermission()
 		PermissionProcessor PP;
 		PP.subjectList(userList);
 		PFC.clearScrean();
-		PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 추가하기 ----------");
+		PFC.printCharArrayWithEndLine("\n--------------------------------------- 공동 관리자 추가하기 ---------------------------------------");
 		PFC.printCharArrayWithEndLine("");
 		for (int i = 0; i < userList->size(); i++)
 			if (strcmp(userList->at(i), user->getUserName())) {
@@ -640,7 +640,7 @@ void Run::givePermission()
 				PFC.printCharArrayWithEndLine(userList->at(i));
 			}
 		PFC.printCharArrayWithEndLine("");
-		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 		PFC.printCharArray(" 공동 관리자로 추가할 사용자 : ");
 		string ID;
 		getline(cin, ID);
@@ -661,7 +661,7 @@ void Run::givePermission()
 					delete permissions;
 					PFC.clearScrean();
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.printCharArrayWithEndLine("");
 					PFC.printCharArray(" ");
 					PFC.printCharArray(userList->at(i));
@@ -672,7 +672,7 @@ void Run::givePermission()
 						User(temp).addPermission(new Permission(user->getUserName()));
 					}
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.pause();
 					delete userList;
 					return;
@@ -694,14 +694,14 @@ void Run::removePermission()
 		PermissionProcessor PP;
 		PP.permissionOwnerList(&Permission(user->getUserName()), userList);
 		PFC.clearScrean();
-		PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 삭제하기 ----------");
+		PFC.printCharArrayWithEndLine("\n--------------------------------------- 공동 관리자 삭제하기 ---------------------------------------");
 		PFC.printCharArrayWithEndLine("");
 		for (int i = 0; i < userList->size(); i++) {
 			PFC.printCharArray(" ");
 			PFC.printCharArrayWithEndLine(userList->at(i));
 		}
 		PFC.printCharArrayWithEndLine("");
-		PFC.printCharArrayWithEndLine("------------------------");
+		PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 		PFC.printCharArray(" 공동 관리자에서 삭제할 사용자 : ");
 		string ID;
 		getline(cin, ID);
@@ -715,13 +715,13 @@ void Run::removePermission()
 				if (success) {
 					PFC.clearScrean();
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.printCharArrayWithEndLine("");
 					PFC.printCharArray(" ");
 					PFC.printCharArray(userList->at(i));
 					PFC.printCharArrayWithEndLine(" 님을 공동 관리자에서 삭제하였습니다.");
 					PFC.printCharArrayWithEndLine("");
-					PFC.printCharArrayWithEndLine("------------------------");
+					PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 					PFC.pause();
 				}
 				else
@@ -743,14 +743,14 @@ void Run::permissionOwnerList()
 	PermissionProcessor PP;
 	PP.permissionOwnerList(&Permission(user->getUserName()), userList);
 	PFC.clearScrean();
-	PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 리스트 ----------");
+	PFC.printCharArrayWithEndLine("\n---------------------------------------- 공동 관리자 리스트 ----------------------------------------");
 	PFC.printCharArrayWithEndLine("");
 	for (int i = 0; i < userList->size(); i++) {
 		PFC.printCharArray(" ");
 		PFC.printCharArrayWithEndLine(userList->at(i));
 	}
 	PFC.printCharArrayWithEndLine("");
-	PFC.printCharArrayWithEndLine("------------------------");
+	PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 	PFC.pause();
 	delete userList;
 }
@@ -761,14 +761,14 @@ void Run::permissionList()
 	PermissionProcessor PP;
 	PP.fileExtraction(user->getUserName(), permissionList);
 	PFC.clearScrean();
-	PFC.printCharArrayWithEndLine("\n--------- 내 관리 권한 확인하기 ----------");
+	PFC.printCharArrayWithEndLine("\n-------------------------------------- 내 관리 권한 확인하기 ---------------------------------------");
 	PFC.printCharArrayWithEndLine("");
 	for (int i = 0; i < permissionList->size(); i++) {
 		PFC.printCharArray(" ");
 		PFC.printCharArrayWithEndLine(permissionList->at(i)->getPermission());
 	}
 	PFC.printCharArrayWithEndLine("");
-	PFC.printCharArrayWithEndLine("------------------------");
+	PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 	PFC.pause();
 	delete permissionList;
 }
