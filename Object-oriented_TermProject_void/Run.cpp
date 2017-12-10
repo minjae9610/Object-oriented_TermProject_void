@@ -454,11 +454,14 @@ void Run::read()
 				throw "해당 문서가 없습니다.";
 			}
 			delete NULLPermission;
-			if (*filePermission != Permission(user->getUserName())) {
-				throw "해당 문서에 대한 접근 권한이 없습니다.";
-				delete filePermission;
-			}
+			int findPermission = 0;
+			user->searchPermission(filePermission, &findPermission);
+			bool hasPermission = false;
+			if (*filePermission == Permission(user->getUserName()) || findPermission != -1)
+				hasPermission = true;
 			delete filePermission;
+			if(!hasPermission)
+				throw "해당 문서에 대한 접근 권한이 없습니다.";
 			PFC.clearScrean();
 			PFC.printCharArray("\n--------- ");
 			PFC.printCharArray(path.c_str());
