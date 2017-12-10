@@ -7,14 +7,18 @@
 class Run {
 private:
 	PrintForConsole PFC;
-	User* user;
+	User* NULLuser = new User();;
+	User* user = NULLuser;
 public:
+	~Run();
 	void mainMenu();
 private:
 	bool unLoginMenu();
 	bool LoginMenu();
+	void userInfoMenu();
 	void signUp();
 	void signIn();
+	void signOut();
 	void write();
 	void read();
 	void remove();

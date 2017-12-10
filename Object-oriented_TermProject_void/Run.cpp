@@ -1,10 +1,17 @@
 #include "stdafx.h"
 #include "Run.h"
 
+Run::~Run()
+{
+	if (user != NULLuser)
+		delete user;
+	delete NULLuser;
+}
+
 void Run::mainMenu()
 {
 	while (true) {
-		if (!user) {
+		if (user == NULLuser) {
 			if (unLoginMenu())
 				break;
 		}
@@ -92,8 +99,12 @@ bool Run::LoginMenu()
 		case 3:
 			remove();
 			break;
+		case 4:
+			userInfoMenu();
+			break;
 		case 0:
 			delete user;
+			user = NULLuser;
 			return true;
 		default:
 			throw "입력이 잘못되었습니다.";
@@ -103,6 +114,49 @@ bool Run::LoginMenu()
 		PFC.printError(st);
 	}
 	return false;
+}
+
+void Run::userInfoMenu()
+{
+	while (true) {
+		try {
+			PFC.clearScrean();
+			PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+			PFC.printCharArray(" 현재 로그인 한 사용자 : ");
+			PFC.printCharArrayWithEndLine(user->getUserName());
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine(" 1 : 로그아웃");
+			PFC.printCharArrayWithEndLine(" 2 : 회원탈퇴");
+			PFC.printCharArrayWithEndLine(" 3 : 내 문서에 대해 권한을 가진 사용자 관리하기");
+			PFC.printCharArrayWithEndLine(" 0 : 메인 메뉴로 돌아가기");
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArray(" 메뉴 선택 : ");
+			int menuSelect;
+			cin >> menuSelect;
+			if (!cin || cin.get() != '\n') {
+				cin.clear();
+				cin.ignore(UINT_MAX, '\n');
+				throw "입력이 잘못되었습니다.";
+			}
+			switch (menuSelect)
+			{
+			case 1:
+				signOut();
+				return;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 0:
+				return;
+			default:
+				throw "입력이 잘못되었습니다.";
+			}
+		}
+		catch (const char* st) {
+			PFC.printError(st);
+		}
+	}
 }
 
 void Run::signUp()
@@ -181,6 +235,12 @@ void Run::signIn()
 			break;
 		}
 	}
+}
+
+void Run::signOut()
+{
+	delete user;
+	user = NULLuser;
 }
 
 void Run::write()
@@ -388,7 +448,6 @@ void Run::remove()
 				PFC.printCharArrayWithEndLine("\n--------- 문서 삭제 ----------");
 				PFC.printCharArrayWithEndLine(" 문서 리스트");
 				PFC.printCharArrayWithEndLine("");
-				fileList->clear();
 				FP.fileList(fileList);
 				for (int i = 0; i < fileList->size(); i++) {
 					PFC.printCharArray(" ");
