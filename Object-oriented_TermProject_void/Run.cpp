@@ -114,7 +114,7 @@ void Run::userInfoMenu()
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArrayWithEndLine(" 1 : 로그아웃");
 			PFC.printCharArrayWithEndLine(" 2 : 회원탈퇴");
-			PFC.printCharArrayWithEndLine(" 3 : 내 문서에 대해 권한을 가진 사용자 관리하기");
+			PFC.printCharArrayWithEndLine(" 3 : 내 문서 공동 관리자 관리하기");
 			PFC.printCharArrayWithEndLine(" 0 : 메인 메뉴로 돌아가기");
 			PFC.printCharArrayWithEndLine("------------------------");
 			PFC.printCharArray(" 메뉴 선택 : ");
@@ -135,6 +135,50 @@ void Run::userInfoMenu()
 					return;
 				break;
 			case 3:
+				permissionManageMenu();
+				break;
+			case 0:
+				return;
+			default:
+				throw "입력이 잘못되었습니다.";
+			}
+		}
+		catch (const char* st) {
+			PFC.printError(st);
+		}
+	}
+}
+
+void Run::permissionManageMenu()
+{
+	while (true) {
+		try {
+			PFC.clearScrean();
+			PFC.printCharArrayWithEndLine("\n--------- VOID ----------");
+			PFC.printCharArray(" 현재 로그인 한 사용자 : ");
+			PFC.printCharArrayWithEndLine(user->getUserName());
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArrayWithEndLine(" 1 : 내 문서 공동 관리자 추가하기");
+			PFC.printCharArrayWithEndLine(" 2 : 내 문서 공동 관리자 삭제하기");
+			PFC.printCharArrayWithEndLine(" 3 : 내 문서 공동 관리자 리스트 확인하기");
+			PFC.printCharArrayWithEndLine(" 0 : 내 정보 설정 메뉴로 돌아가기");
+			PFC.printCharArrayWithEndLine("------------------------");
+			PFC.printCharArray(" 메뉴 선택 : ");
+			int menuSelect;
+			cin >> menuSelect;
+			if (!cin || cin.get() != '\n') {
+				cin.clear();
+				cin.ignore(UINT_MAX, '\n');
+				throw "입력이 잘못되었습니다.";
+			}
+			switch (menuSelect)
+			{
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				permissionOwnerList();
 				break;
 			case 0:
 				return;
@@ -515,4 +559,20 @@ void Run::remove()
 			break;
 		}
 	}
+}
+
+void Run::permissionOwnerList()
+{
+	vector<const char*>* userList = new vector<const char*>();
+	PermissionProcessor PP;
+	PP.permissionOwnerList(&Permission(user->getUserName()), userList);
+	PFC.clearScrean();
+	PFC.printCharArrayWithEndLine("\n--------- 공동 관리자 리스트 ----------");
+	PFC.printCharArrayWithEndLine("");
+	for(int i = 0; i < userList->size(); i++)
+		PFC.printCharArrayWithEndLine(userList->at(i));
+	PFC.printCharArrayWithEndLine("");
+	PFC.printCharArrayWithEndLine("------------------------");
+	PFC.pause();
+	delete userList;
 }

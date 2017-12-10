@@ -2,7 +2,6 @@
 #include "PrintForConsole.h"
 #include "Processor.h"
 #include "User.h"
-#include "TestFileSys.h"
 
 class Run {
 private:
@@ -15,6 +14,7 @@ private:
 	bool unLoginMenu();
 	bool LoginMenu();
 	void userInfoMenu();
+	void permissionManageMenu();
 	void signUp();
 	void signIn();
 	void signOut();
@@ -22,4 +22,5 @@ private:
 	void write();
 	void read();
 	void remove();
+	void permissionOwnerList();
 };

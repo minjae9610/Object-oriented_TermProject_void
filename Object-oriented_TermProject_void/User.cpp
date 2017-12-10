@@ -13,16 +13,16 @@ User::User(char* name)
 	userName = name;
 	permissions = new vector<Permission*>();
 	PermissionProcessor PP;
-	PP.fileExtraction("SystemData\\UserPermissionInfo.VOID_DB", userName, permissions);
+	PP.fileExtraction(userName, permissions);
 	if (permissions->size() == 0)
-		PP.fileRenewal("SystemData\\UserPermissionInfo.VOID_DB", userName, permissions);
+		PP.fileRenewal(userName, permissions);
 }
 
 void User::addPermission(Permission* permission)
 {
 	permissions->push_back(permission);
 	PermissionProcessor PP;
-	PP.fileRenewal("SystemData\\UserPermissionInfo.VOID_DB", userName, permissions);
+	PP.fileRenewal(userName, permissions);
 }
 
 void User::deletePermission(Permission* permission, bool* success)
@@ -32,7 +32,7 @@ void User::deletePermission(Permission* permission, bool* success)
 	if (perNum != -1) {
 		permissions->erase(permissions->begin() + perNum);
 		PermissionProcessor PP;
-		PP.fileRenewal("SystemData\\UserPermissionInfo.VOID_DB", userName, permissions);
+		PP.fileRenewal(userName, permissions);
 		*success = true;
 		return;
 	}

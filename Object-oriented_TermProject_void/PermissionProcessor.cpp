@@ -110,3 +110,24 @@ void PermissionProcessor::subjectDelete(char* name, bool* success)
 	VBFSA.fileOut("SystemData\\UserPermissionInfo.VOID_DB", permissionFile);
 	delete permissionFile;
 }
+
+void PermissionProcessor::permissionOwnerList(Permission* permission, vector<const char*>* userList)
+{
+	userList->clear();
+	vector<const char*>* subjects = new vector<const char*>();
+	subjectList(subjects);
+	for (int i = 0; i < subjects->size(); i++) {
+		StringFixAdapter SFA;
+		char* temp;
+		SFA.constToNot(subjects->at(i), &temp);
+		vector<Permission*>* permissionList = new vector<Permission*>();
+		fileExtraction(temp, permissionList);
+		for (int j = 0; j < permissionList->size(); j++) {
+			if (permission == permissionList->at(j))
+				userList->push_back(subjects->at(i));
+			delete permissionList->at(j);
+		}
+		delete permissionList;
+	}
+	delete subjects;
+}

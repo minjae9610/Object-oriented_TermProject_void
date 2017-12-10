@@ -8,4 +8,5 @@ public:
 	void fileRenewal(char *, vector<Permission*>*);
 	void subjectList(vector<const char*>*);
 	void subjectDelete(char *, bool *);
+	void permissionOwnerList(Permission*, vector<const char*>*);
 };

@@ -48,7 +48,7 @@ void LoginProcessor::DeleteAccount(const char* ID, const char* PW, bool* success
 			char* ptr;
 			SFA.constToNot(ID, &ptr);
 			PermissionProcessor PP;
-			PP.subjectDelete("SystemData\\UserPermissionInfo.VOID_DB", ptr, success);
+			PP.subjectDelete(ptr, success);
 			*success = true;
 			break;
 		}
