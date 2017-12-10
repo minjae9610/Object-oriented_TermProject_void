@@ -25,4 +25,5 @@ private:
 	void givePermission();
 	void removePermission();
 	void permissionOwnerList();
+	void permissionList();
 };
