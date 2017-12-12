@@ -516,7 +516,9 @@ void Run::read()
 			PFC.clearScrean();
 			PFC.printCharArrayWithEndLine("----------------------------------------------------------------------------------------------------");
 			PFC.printCharArrayWithEndLine("");
+			PFC.printCharArray(" Á¦¸ñ : ");
 			PFC.printCharArray(path.c_str());
+			PFC.printCharArrayWithEndLine("");
 			PFC.printCharArrayWithEndLine("");
 			for (int i = 0; i < contents->size(); i++) {
 				PFC.printCharArray(" ");
